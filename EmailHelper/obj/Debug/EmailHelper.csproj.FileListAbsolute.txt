@@ -1,0 +1,6 @@
+D:\專題\BooksPlatform.Solution\EmailHelper\bin\Debug\EmailHelper.dll
+D:\專題\BooksPlatform.Solution\EmailHelper\bin\Debug\EmailHelper.pdb
+D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.csproj.AssemblyReference.cache
+D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.csproj.CoreCompileInputs.cache
+D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.dll
+D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.pdb

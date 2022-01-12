@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "2fb02cad-7f2a-4a83-9cc9-0863921e9900": {
+      "ProjectGuid": "2fb02cad-7f2a-4a83-9cc9-0863921e9900",
+      "DisplayName": "WA.BooksPlatform",
+      "ColorIndex": 0
+    },
+    "1531cf57-a006-4691-96c0-c7ecc5ac8af6": {
+      "ProjectGuid": "1531cf57-a006-4691-96c0-c7ecc5ac8af6",
+      "DisplayName": "HashUtility",
+      "ColorIndex": 1
+    },
+    "c5a083c3-f5e0-4f8a-b1a5-16a1e59eb0c9": {
+      "ProjectGuid": "c5a083c3-f5e0-4f8a-b1a5-16a1e59eb0c9",
+      "DisplayName": "EmailHelper",
+      "ColorIndex": 2
+    },
+    "09732359-3214-48b5-aefc-5c79c4c6c7c2": {
+      "ProjectGuid": "09732359-3214-48b5-aefc-5c79c4c6c7c2",
+      "DisplayName": "Exts",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

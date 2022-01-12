@@ -1,0 +1,6 @@
+D:\專題\BooksPlatform.Solution\DataValidator\bin\Debug\DataValidator.dll
+D:\專題\BooksPlatform.Solution\DataValidator\bin\Debug\DataValidator.pdb
+D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.csproj.AssemblyReference.cache
+D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.csproj.CoreCompileInputs.cache
+D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.dll
+D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.pdb

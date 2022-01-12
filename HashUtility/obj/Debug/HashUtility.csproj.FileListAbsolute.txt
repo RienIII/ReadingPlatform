@@ -1,0 +1,6 @@
+D:\專題\BooksPlatform.Solution\HashUtility\bin\Debug\HashUtility.dll
+D:\專題\BooksPlatform.Solution\HashUtility\bin\Debug\HashUtility.pdb
+D:\專題\BooksPlatform.Solution\HashUtility\obj\Debug\HashUtility.csproj.AssemblyReference.cache
+D:\專題\BooksPlatform.Solution\HashUtility\obj\Debug\HashUtility.csproj.CoreCompileInputs.cache
+D:\專題\BooksPlatform.Solution\HashUtility\obj\Debug\HashUtility.dll
+D:\專題\BooksPlatform.Solution\HashUtility\obj\Debug\HashUtility.pdb
