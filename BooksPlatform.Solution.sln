@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WA.BooksPlatform", "WA.BooksPlatform\WA.BooksPlatform.csproj", "{2FB02CAD-7F2A-4A83-9CC9-0863921E9900}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructurse", "Infrastructurse", "{1DE7CDB0-26B6-47A3-92F7-07AA07CD0E68}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashUtility", "HashUtility\HashUtility.csproj", "{1531CF57-A006-4691-96C0-C7ECC5AC8AF6}"
 EndProject

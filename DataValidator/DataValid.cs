@@ -38,12 +38,46 @@ namespace DataValidator
 		/// <param name="maxValue">要小於等於多少文字長度</param>
 		/// <returns></returns>
 		/// <exception cref="Exception"></exception>
-		public DataValid<T> StringLength(int maxValue)
+		public DataValid<T> StringLengthLessThan(int maxValue)
 		{
 			if (typeof(T) == typeof(string))
 			{
 				string value = Convert.ToString(Data);
-				if (value.Length > maxValue) throw new Exception($"{DisplayName}超過限制長度");
+				if (value.Length > maxValue) throw new Exception($"{DisplayName}超過長度限制");
+			}
+
+			return this;
+		}
+
+		/// <summary>
+		/// 最少要幾個字 要大於minValue
+		/// </summary>
+		/// <param name="minValue">最少字數</param>
+		/// <returns></returns>
+		/// <exception cref="Exception"></exception>
+		public DataValid<T> StringLengthGreaterThan(int minValue)
+		{
+			if (typeof(T) == typeof(string))
+			{
+				string value = Convert.ToString(Data);
+				if (value.Length < minValue) throw new Exception($"{DisplayName}小於長度限制");
+			}
+
+			return this;
+		}
+
+		/// <summary>
+		/// 最少要幾個字 要大於等於minValue
+		/// </summary>
+		/// <param name="minValue">最少字數</param>
+		/// <returns></returns>
+		/// <exception cref="Exception"></exception>
+		public DataValid<T> StringLengthGreaterOrEqualThan(int minValue)
+		{
+			if (typeof(T) == typeof(string))
+			{
+				string value = Convert.ToString(Data);
+				if (value.Length <= minValue) throw new Exception($"{DisplayName}小於長度限制");
 			}
 
 			return this;

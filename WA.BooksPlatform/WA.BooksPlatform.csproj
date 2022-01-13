@@ -128,6 +128,10 @@
     <Compile Include="Models\DTOs\ResetPasswordRequest.cs" />
     <Compile Include="Models\DTOs\ResetPasswordResponse.cs" />
     <Compile Include="Models\DTOs\ResetProfileRequest.cs" />
+    <Compile Include="Models\Entities\BookContentEntity.cs" />
+    <Compile Include="Models\Entities\BookDirectoryEntity.cs" />
+    <Compile Include="Models\Entities\BookEntity.cs" />
+    <Compile Include="Models\Entities\CategoryEntity.cs" />
     <Compile Include="Models\Entities\MemberEntity.cs" />
     <Compile Include="Models\Entities\RegisterEntity.cs" />
     <Compile Include="Global.asax.cs">

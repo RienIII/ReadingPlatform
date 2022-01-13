@@ -123,7 +123,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 		{
 			MemberEntityNoPassword entity = repository.Lord(account);
 			if (entity == null) throw new Exception("帳號不存在");
-
+			
 			return entity.ImageFileName;
 		}
 	}

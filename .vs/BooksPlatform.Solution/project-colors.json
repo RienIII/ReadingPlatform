@@ -20,7 +20,17 @@
       "ProjectGuid": "09732359-3214-48b5-aefc-5c79c4c6c7c2",
       "DisplayName": "Exts",
       "ColorIndex": 3
+    },
+    "cbe4f318-8c3b-49a8-916f-1bf15d88c0dd": {
+      "ProjectGuid": "cbe4f318-8c3b-49a8-916f-1bf15d88c0dd",
+      "DisplayName": "DataValidator",
+      "ColorIndex": 4
+    },
+    "1de7cdb0-26b6-47a3-92f7-07aa07cd0e68": {
+      "ProjectGuid": "1de7cdb0-26b6-47a3-92f7-07aa07cd0e68",
+      "DisplayName": "Infrastructurse",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 6
 }

@@ -12,7 +12,7 @@ namespace WA.BooksPlatform.Entities
 		public MemberEntity(string account, string name, string email, string password) 
 			: base(account, name, email)
 		{
-			new DataValid<string>(password, "密碼").StringRequired().StringLength(100);
+			new DataValid<string>(password, "密碼").StringRequired().StringLengthLessThan(100);
 
 			this.Password = password;
 		}
@@ -38,9 +38,9 @@ namespace WA.BooksPlatform.Entities
 	{
 		public MemberEntityNoPassword(string account, string name, string email)
 		{
-			new DataValid<string>(account, "帳號").StringRequired().StringLength(50);
-			new DataValid<string>(name, "暱稱").StringRequired().StringLength(50);
-			new DataValid<string>(email, "Email").StringRequired().StringLength(256);
+			new DataValid<string>(account, "帳號").StringRequired().StringLengthLessThan(50);
+			new DataValid<string>(name, "暱稱").StringRequired().StringLengthLessThan(50);
+			new DataValid<string>(email, "Email").StringRequired().StringLengthLessThan(256);
 
 			this.Account = account;
 			this.Name = name;
