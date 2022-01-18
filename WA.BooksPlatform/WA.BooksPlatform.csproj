@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,26 +136,45 @@
     <Compile Include="Models\DTOs\ResetPasswordRequest.cs" />
     <Compile Include="Models\DTOs\ResetPasswordResponse.cs" />
     <Compile Include="Models\DTOs\ResetProfileRequest.cs" />
-    <Compile Include="Models\Entities\BookContentEntity.cs" />
-    <Compile Include="Models\Entities\BookDirectoryEntity.cs" />
+    <Compile Include="Models\EFModels\AppDbContext.cs" />
+    <Compile Include="Models\EFModels\Author.cs" />
+    <Compile Include="Models\EFModels\Book.cs" />
+    <Compile Include="Models\EFModels\BookChapter.cs" />
+    <Compile Include="Models\EFModels\BookPart.cs" />
+    <Compile Include="Models\EFModels\Bookshelf.cs" />
+    <Compile Include="Models\EFModels\Category.cs" />
+    <Compile Include="Models\EFModels\Member.cs" />
+    <Compile Include="Models\EFModels\sysdiagram.cs" />
+    <Compile Include="Models\Entities\AuthorEntity.cs" />
+    <Compile Include="Models\Entities\BookBasicEntity.cs" />
+    <Compile Include="Models\Entities\BookChapterEntity.cs" />
+    <Compile Include="Models\Entities\BookPartEntity.cs" />
     <Compile Include="Models\Entities\BookEntity.cs" />
+    <Compile Include="Models\Entities\BookshelfEntity.cs" />
     <Compile Include="Models\Entities\CategoryEntity.cs" />
     <Compile Include="Models\Entities\MemberEntity.cs" />
-    <Compile Include="Models\Entities\RegisterEntity.cs" />
+    <Compile Include="Models\Entities\LoginDataEntity.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Infrastructurse\Exts\BookEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ResetProfileRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ResetProfileVMExts.cs" />
+    <Compile Include="Models\Infrastructurse\ForPages.cs" />
+    <Compile Include="Models\Services\Core\BookService.cs" />
+    <Compile Include="Models\Services\Core\BookshelfService.cs" />
+    <Compile Include="Models\Services\Core\Interfaces\IBookRepository.cs" />
+    <Compile Include="Models\Services\Core\Interfaces\IBookshelfRepository.cs" />
     <Compile Include="Models\Services\Core\Interfaces\IMemberRepository.cs" />
-    <Compile Include="Models\Services\Core\Interfaces\IMemberService.cs" />
     <Compile Include="Models\DTOs\RegisterRequest.cs" />
     <Compile Include="Models\DTOs\RegisterResponse.cs" />
     <Compile Include="Models\Services\Core\MemberService.cs" />
     <Compile Include="Models\Services\UseCases\ImageFileCommand.cs" />
     <Compile Include="Models\Services\UseCases\RegisterCommand.cs" />
+    <Compile Include="Models\ViewModels\BookshelfVM.cs" />
+    <Compile Include="Models\ViewModels\HomeVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\ResetProfileVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,7 +218,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\EFModels\" />
     <Folder Include="Models\Infrastructurse\Repositories\" />
     <Folder Include="Views\Members\" />
   </ItemGroup>

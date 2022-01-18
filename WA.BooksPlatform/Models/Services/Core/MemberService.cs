@@ -13,11 +13,6 @@ namespace WA.BooksPlatform.Models.Services.Core
 	public class MemberService
 	{
 		private readonly IMemberRepository repository;
-
-		public MemberService()
-		{
-
-		}
 		public MemberService(IMemberRepository repo)
 		{
 			this.repository = repo;

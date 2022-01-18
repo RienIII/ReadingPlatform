@@ -116,5 +116,39 @@ namespace DataValidator
 
 			return this;
 		}
+
+		/// <summary>
+		/// 某數值必須小於maxValue
+		/// </summary>
+		/// <param name="maxValue"></param>
+		/// <returns></returns>
+		/// <exception cref="Exception"></exception>
+		public DataValid<T> LessThan(int maxValue)
+		{
+			if (typeof(T) == typeof(int))
+			{
+				int value = Convert.ToInt32(Data);
+				if (value >= maxValue) throw new Exception($"{DisplayName}必須小於{maxValue}");
+			}
+
+			return this;
+		}
+
+		/// <summary>
+		/// 某數值必須小於等於maxValue
+		/// </summary>
+		/// <param name="maxValue"></param>
+		/// <returns></returns>
+		/// <exception cref="Exception"></exception>
+		public DataValid<T> LessOrEqualThan(int maxValue)
+		{
+			if (typeof(T) == typeof(int))
+			{
+				int value = Convert.ToInt32(Data);
+				if (value > maxValue) throw new Exception($"{DisplayName}必須小於等於{maxValue}");
+			}
+
+			return this;
+		}
 	}
 }

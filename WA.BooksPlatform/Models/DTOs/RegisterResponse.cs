@@ -10,20 +10,21 @@ namespace WA.BooksPlatform.Models.DTOs
 	{
 		public bool IsSuccess { get; set; }
 		public string ErrorMessage { get; set; }
-		public RegisterEntity Data { get; set; }
+		public LoginDataEntity Data { get; set; }
 
 		public static RegisterResponse Success(MemberEntityNoPassword entity)
 		{
 			return new RegisterResponse
 			{
 				IsSuccess = true,
-				Data = new RegisterEntity
+				Data = new LoginDataEntity
 				{
 					Id = entity.Id,
 					Account = entity.Account,
 					Email = entity.Email,
 					Name = entity.Name,
-					ConfirmCode = entity.ConfirmCode
+					ConfirmCode = entity.ConfirmCode,
+					Role = entity.Roles
 				}
 			};
 		}

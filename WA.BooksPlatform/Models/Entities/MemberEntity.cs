@@ -7,6 +7,9 @@ using HashUtilities;
 
 namespace WA.BooksPlatform.Entities
 {
+	/// <summary>
+	/// 會員基本資料，含密碼
+	/// </summary>
 	public class MemberEntity : MemberEntityNoPassword
 	{
 		public MemberEntity(string account, string name, string email, string password) 
@@ -34,6 +37,10 @@ namespace WA.BooksPlatform.Entities
 			}
 		}
 	}
+
+	/// <summary>
+	/// 會員基本資料，不含密碼
+	/// </summary>
 	public class MemberEntityNoPassword
 	{
 		public MemberEntityNoPassword(string account, string name, string email)
@@ -63,14 +70,37 @@ namespace WA.BooksPlatform.Entities
 		public string Email { get; set; }
 
 		private string _ImageFileName;
+		/// <summary>
+		/// 大頭貼
+		/// </summary>
 		public string ImageFileName
 		{
 			get => _ImageFileName;
 			set => _ImageFileName = string.IsNullOrEmpty(value) ? string.Empty : value;
 		}
-
+		/// <summary>
+		/// 是否有啟用帳號
+		/// </summary>
 		public bool IsConfirmed { get; set; }
 
+		/// <summary>
+		/// 啟用帳號需要的驗證碼
+		/// </summary>
 		public string ConfirmCode { get; set; }
+
+		/// <summary>
+		/// 重設密碼需要的驗證碼
+		/// </summary>
+		public string ResetPasswordCode { get; set; }
+
+		/// <summary>
+		/// 角色權限
+		/// </summary>
+		public string Roles { get; set; }
+
+		/// <summary>
+		/// 帳號創建日期
+		/// </summary>
+		public DateTime CreateTime { get; set; }
 	}
 }

@@ -4,15 +4,21 @@ using System.Linq;
 using System.Web;
 using WA.BooksPlatform.Models.Infrastructurse.Exts;
 using WA.BooksPlatform.Models.Services.Core;
+using WA.BooksPlatform.Models.Services.Core.Interfaces;
 using WA.BooksPlatform.Models.ViewModels;
 
 namespace WA.BooksPlatform.Models.Services.UseCases
 {
 	public class ImageFileCommand
 	{
+		private IMemberRepository repository;
+		public ImageFileCommand(IMemberRepository repo)
+		{
+			this.repository = repo;
+		}
 		public void ResetProfile(string path, ResetProfileVM model)
 		{
-			MemberService service = new MemberService();
+			MemberService service = new MemberService(repository);
 
 			string newImageFileName = SaveFile(path, model.File);
 			string originalFileName = service.LordFileName(model.UserAccount);

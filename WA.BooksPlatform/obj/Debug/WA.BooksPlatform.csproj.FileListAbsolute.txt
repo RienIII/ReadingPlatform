@@ -90,3 +90,8 @@ D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\HashUtility.dll
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\DataValidator.pdb
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EmailHelper.pdb
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\HashUtility.pdb
+D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EntityFramework.dll
+D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EntityFramework.SqlServer.dll
+D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EntityFramework.xml
+D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EntityFramework.SqlServer.xml
+D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\zh-Hant\EntityFramework.resources.dll
