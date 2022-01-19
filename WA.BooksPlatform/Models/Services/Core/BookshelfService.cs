@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using WA.BooksPlatform.Models.DTOs;
 using WA.BooksPlatform.Models.Entities;
+using WA.BooksPlatform.Models.Infrastructurse;
 using WA.BooksPlatform.Models.Infrastructurse.Exts;
 using WA.BooksPlatform.Models.Services.Core.Interfaces;
+using WA.BooksPlatform.Models.ViewModels;
 
 namespace WA.BooksPlatform.Models.Services.Core
 {
@@ -35,6 +37,33 @@ namespace WA.BooksPlatform.Models.Services.Core
 			}
 			return bookshelfRepository.Lord(memberId);
 		}
+
+		/// <summary>
+		/// 書架分頁用
+		/// </summary>
+		/// <param name="pages"></param>
+		/// <param name="memberId"></param>
+		/// <returns></returns>
+		public List<BookshelfItemEntity> CurrentBookshelf(ForPages pages, int memberId)
+		{
+			var bookshelf = Current(memberId);
+
+			pages.MaxPage = Convert.ToInt32
+			(
+				Math.Ceiling
+				(
+					Convert.ToDouble(bookshelf.Books.Count() / pages.ItemNumPage)
+				)
+			);
+
+			pages.SetPage();
+
+			return bookshelf.Books
+				.OrderBy(x => x.Id)
+				.Skip((pages.NowPage - 1) * pages.ItemNumPage)
+				.Take(pages.ItemNumPage)
+				.ToList();
+		} 
 
 		/// <summary>
 		/// 新增書籍到書架

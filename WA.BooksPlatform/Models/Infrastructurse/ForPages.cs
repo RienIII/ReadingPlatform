@@ -35,7 +35,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse
 		public int MaxPage { get; set; }
 
 		/// <summary>
-		/// 頁數個數
+		/// 一頁有幾本書
 		/// </summary>
 		public int ItemNumPage => 10;
 

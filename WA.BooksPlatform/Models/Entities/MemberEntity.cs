@@ -78,6 +78,7 @@ namespace WA.BooksPlatform.Entities
 			get => _ImageFileName;
 			set => _ImageFileName = string.IsNullOrEmpty(value) ? string.Empty : value;
 		}
+
 		/// <summary>
 		/// 是否有啟用帳號
 		/// </summary>

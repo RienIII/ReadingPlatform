@@ -44,7 +44,6 @@ namespace WA.BooksPlatform.Models.EFModels
         [StringLength(40)]
         public string ResetPasswordCode { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Roles { get; set; }
 

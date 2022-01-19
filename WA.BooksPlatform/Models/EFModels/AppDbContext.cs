@@ -16,6 +16,7 @@ namespace WA.BooksPlatform.Models.EFModels
 		public virtual DbSet<BookChapter> BookChapters { get; set; }
 		public virtual DbSet<BookPart> BookParts { get; set; }
 		public virtual DbSet<Book> Books { get; set; }
+		public virtual DbSet<BookshelfItem> BookshelfItems { get; set; }
 		public virtual DbSet<Bookshelf> Bookshelfs { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
 		public virtual DbSet<Member> Members { get; set; }
@@ -34,8 +35,13 @@ namespace WA.BooksPlatform.Models.EFModels
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Book>()
-				.HasMany(e => e.Bookshelfs)
+				.HasMany(e => e.BookshelfItems)
 				.WithRequired(e => e.Book)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<Bookshelf>()
+				.HasMany(e => e.BookshelfItems)
+				.WithRequired(e => e.Bookshelf)
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Member>()

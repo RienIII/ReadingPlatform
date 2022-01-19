@@ -19,6 +19,13 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 		bool IsExist(string account);
 
 		/// <summary>
+		/// 用ID查看會員是否存在
+		/// </summary>
+		/// <param name="memberId"></param>
+		/// <returns></returns>
+		bool IsExist(int memberId);
+
+		/// <summary>
 		/// 用會員帳號找一筆資料
 		/// </summary>
 		/// <param name="account"></param>
@@ -33,13 +40,13 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 		MemberEntity Lord(int memberId);
 
 		/// <summary>
-		/// 啟用會員帳號
+		/// 啟用會員帳號，加入Roles:General一般會員
 		/// </summary>
 		/// <param name="memberId">需要啟用的會員ID</param>
 		void ActiveRegister(int memberId);
 
 		/// <summary>
-		/// 除了密碼之外都可以用來更新資料
+		/// 除了密碼和啟用會員資格之外都可以用來更新資料
 		/// </summary>
 		/// <param name="entity"></param>
 		void Update(MemberEntityNoPassword entity);

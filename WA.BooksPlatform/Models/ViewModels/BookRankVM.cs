@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WA.BooksPlatform.Models.DTOs;
 using WA.BooksPlatform.Models.Entities;
 using WA.BooksPlatform.Models.Infrastructurse;
 
 namespace WA.BooksPlatform.Models.ViewModels
 {
-	/// <summary>
-	/// 呈現書架用
-	/// </summary>
-	public class BookshelfVM
+	public class BookRankVM
 	{
-		public List<BookshelfItemEntity> Books { get; set; }
+		public List<BookBasicEntity> Books { get; set; }
+
+		/// <summary>
+		/// 排序方式
+		/// </summary>
+		public string Sort { get; set; }
+
+		/// <summary>
+		/// 分頁
+		/// </summary>
 		public ForPages ForPages { get; set; }
 	}
 }

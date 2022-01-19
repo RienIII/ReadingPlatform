@@ -16,12 +16,10 @@ namespace WA.BooksPlatform.Models.Entities
 		/// </summary>
 		/// <param name="name">書架名稱</param>
 		/// <param name="memberId"></param>
-		public BookshelfEntity(string name, int memberId)
+		public BookshelfEntity(int memberId)
 		{
-			new DataValid<string>(name, "書架名稱").StringRequired().StringLengthGreaterThan(0);
 			new DataValid<int>(memberId, "會員ID").GreaterThan(0);
 
-			this.Name = name;
 			this.MemberId = memberId;
 		}
 
@@ -31,11 +29,11 @@ namespace WA.BooksPlatform.Models.Entities
 		/// <param name="id"></param>
 		/// <param name="name"></param>
 		/// <param name="memberId"></param>
-		/// <param name="book"></param>
-		public BookshelfEntity(int id, string name, int memberId, List<BookBasicEntity> book):this(name, memberId)
+		/// <param name="bookItem"></param>
+		public BookshelfEntity(int id, int memberId, List<BookshelfItemEntity> bookItem):this(memberId)
 		{
 			this.Id = id;
-			this.Books = book;
+			this.Books = bookItem;
 		}
 		public int Id { get; set; }
 		public string Name { get; set; }
@@ -44,20 +42,21 @@ namespace WA.BooksPlatform.Models.Entities
 		/// <summary>
 		/// 書架裡面的書籍
 		/// </summary>
-		public List<BookBasicEntity> Books { get; set; }
+		public List<BookshelfItemEntity> Books { get; set; }
 
 		/// <summary>
 		/// 新增書籍
 		/// </summary>
-		/// <param name="bookBasic">書籍</param>
+		/// <param name="bookItem">書籍</param>
 		/// <exception cref="Exception">可能新增的書籍已經不存在</exception>
-		public void AddItem(BookBasicEntity bookBasic)
+		public void AddItem(BookBasicEntity bookItem)
 		{
-			if (bookBasic == null) throw new Exception("書籍不存在");
+			if (bookItem == null) throw new Exception("書籍不存在");
 
-			var item = Books.SingleOrDefault(x=>x.Id == bookBasic.Id);
+			var item = Books.SingleOrDefault(x=>x.Id == bookItem.Id);
 
-			if(item == null) Books.Add(bookBasic);
+			if(item == null) Books.Add(item);
+
 			else return;
 		}
 
@@ -76,6 +75,6 @@ namespace WA.BooksPlatform.Models.Entities
 		/// <summary>
 		/// 取得書架的書籍
 		/// </summary>
-		public IEnumerable<BookBasicEntity> GetItem => this.Books;
+		public IEnumerable<BookshelfItemEntity> GetBook => this.Books;
 	}
 }

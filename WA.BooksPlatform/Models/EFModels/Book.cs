@@ -12,7 +12,7 @@ namespace WA.BooksPlatform.Models.EFModels
         public Book()
         {
             BookChapters = new HashSet<BookChapter>();
-            Bookshelfs = new HashSet<Bookshelf>();
+            BookshelfItems = new HashSet<BookshelfItem>();
         }
 
         public int Id { get; set; }
@@ -52,6 +52,6 @@ namespace WA.BooksPlatform.Models.EFModels
         public virtual Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bookshelf> Bookshelfs { get; set; }
+        public virtual ICollection<BookshelfItem> BookshelfItems { get; set; }
     }
 }
