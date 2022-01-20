@@ -14,6 +14,9 @@ namespace WA.BooksPlatform.Models.Entities
 		public int Id { get; set; }
 
 		private string _Name;
+		/// <summary>
+		/// 章節標題
+		/// </summary>
 		public string Name
 		{
 			get => _Name;
@@ -24,17 +27,20 @@ namespace WA.BooksPlatform.Models.Entities
 			}
 		}
 
-		private string _Content;
-		public string Content
+		private string _Artical;
+		/// <summary>
+		/// 文章內容
+		/// </summary>
+		public string Artical
 		{
-			get => _Content;
+			get => _Artical;
 			set
 			{
 				new DataValid<string>(value, "內容").StringRequired().StringLengthGreaterThan(500);
-				_Content = value;
+				_Artical = value;
 			}
 		}
-		public int WordCount => string.IsNullOrEmpty(Content) ? 0 : Content.Length;
+		public int WordCount => string.IsNullOrEmpty(Artical) ? 0 : Artical.Length;
 		
 	}
 }

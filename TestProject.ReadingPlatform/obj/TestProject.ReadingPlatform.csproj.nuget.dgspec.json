@@ -1,0 +1,161 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj": {}
+  },
+  "projects": {
+    "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj",
+        "projectName": "DataValidator",
+        "projectPath": "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj",
+        "projectName": "EmailHelper",
+        "projectPath": "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj",
+        "projectName": "HashUtility",
+        "projectPath": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
+        "projectName": "TestProject.ReadingPlatform",
+        "projectPath": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj": {
+                "projectPath": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj"
+              },
+              "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
+                "projectPath": "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "NSubstitute": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.2, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj",
+        "projectName": "WA.BooksPlatform",
+        "projectPath": "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj": {
+                "projectPath": "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj"
+              },
+              "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj": {
+                "projectPath": "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj"
+              },
+              "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj": {
+                "projectPath": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    }
+  }
+}

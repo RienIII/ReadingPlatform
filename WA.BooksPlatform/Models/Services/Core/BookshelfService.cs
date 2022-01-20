@@ -44,7 +44,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 		/// <param name="pages"></param>
 		/// <param name="memberId"></param>
 		/// <returns></returns>
-		public List<BookshelfItemEntity> CurrentBookshelf(ForPages pages, int memberId)
+		public List<BookshelfItemEntity>CurrentBookshelf(ForPages pages, int memberId)
 		{
 			var bookshelf = Current(memberId);
 

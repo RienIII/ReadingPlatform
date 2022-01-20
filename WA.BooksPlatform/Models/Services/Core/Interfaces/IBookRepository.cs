@@ -10,6 +10,13 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 	public interface IBookRepository
 	{
 		/// <summary>
+		/// 查看所搜尋的書存在與否
+		/// </summary>
+		/// <param name="bookId">需要搜尋的書籍ID</param>
+		/// <returns></returns>
+		bool IsExist(int bookId);
+
+		/// <summary>
 		/// 載入一筆資料，但是已經進入書籍頁
 		/// </summary>
 		/// <param name="bookId"></param>

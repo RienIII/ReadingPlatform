@@ -28,7 +28,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 		/// <returns></returns>
 		public RegisterResponse CreateNewMember(RegisterRequest request)
 		{
-			if (!repository.IsExist(request.Account))
+			if (repository.IsExist(request.Account))
 			{
 				return RegisterResponse.Fail("帳號已存在");
 			}
@@ -47,18 +47,34 @@ namespace WA.BooksPlatform.Models.Services.Core
 		/// </summary>
 		/// <param name="memberId"></param>
 		/// <param name="confirmCode"></param>
-		public void AtiveRegister(int memberId, string confirmCode)
+		public void AtiveRegister(int memberId, string confirmCode, out bool isSuccess)
 		{
 			MemberEntityNoPassword entity = repository.Lord(memberId);
 			
-			if (entity == null) return;
+			if (entity == null)
+			{
+				isSuccess = false;
+				return;
+			}
 
-			if (entity.IsConfirmed) return;
+			if (entity.IsConfirmed)
+			{
+				isSuccess = false;
+				return;
+			}
 
-			if (string.IsNullOrEmpty(entity.ConfirmCode)) return;
+			if (string.IsNullOrEmpty(entity.ConfirmCode))
+			{
+				isSuccess = false;
+				return;
+			}
 
-			if (string.Compare(entity.ConfirmCode, confirmCode) != 0) return;
-
+			if (string.Compare(entity.ConfirmCode, confirmCode) != 0)
+			{
+				isSuccess = false;
+				return;
+			}
+			isSuccess = true;
 			repository.ActiveRegister(memberId);
 		}
 
@@ -104,12 +120,23 @@ namespace WA.BooksPlatform.Models.Services.Core
 		/// </summary>
 		/// <param name="request"></param>
 		/// <exception cref="Exception"></exception>
-		public void ForgetPassword(ForgetPasswordRequest request)
+		public void ForgetPassword(ForgetPasswordRequest request, out bool isSuccess)
 		{
 			MemberEntity entity = repository.Lord(request.Id);
-			if (entity == null) throw new Exception("找不到對應的會員紀錄");
-			if (string.Compare(entity.ConfirmCode, request.ConfirmCode) != 0) throw new Exception("找不到對應的會員紀錄");
+			if (entity == null)
+			{
+				// 找不到對應的會員紀錄
+				isSuccess = false; 
+				return;
+			}
+			if (string.Compare(entity.ConfirmCode, request.ConfirmCode) != 0)
+			{
+				// 找不到對應的會員紀錄
+				isSuccess = false;
+				return;
+			}
 
+			isSuccess = true;
 			entity.Password = request.NewPassword;
 			repository.Update(entity);
 		}

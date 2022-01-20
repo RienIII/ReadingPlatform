@@ -11,7 +11,6 @@ namespace WA.BooksPlatform.Models.DTOs
 	{
 		public string UserAccount { get; set; }
 		public string OriginalPassword { get;set; }
-		
 		public string NewPassword { get; set; }
 	}
 }

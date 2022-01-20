@@ -95,3 +95,4 @@ D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EntityFramework.SqlServer.
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EntityFramework.xml
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\EntityFramework.SqlServer.xml
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\zh-Hant\EntityFramework.resources.dll
+D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\zh-Hant\EntityFramework.SqlServer.resources.dll

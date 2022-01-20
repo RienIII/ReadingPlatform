@@ -24,7 +24,7 @@
 
 [V] add /Models/Infrastructurse/ForPages.cs 分頁用
 
-[working on] add BookService書籍...
+[V] add BookService書籍...
 				add IBookRepository 因為排序條件不同所以在Controller決定需要用哪一個interface
 				add IBookRankRepository 繼承 IBookRepository : 呈現排行用
 				add IBookHomeRepository 繼承 IBookRepository : 呈現首頁用
@@ -39,6 +39,9 @@
 					add /Models/Infrastructures/Exts/BookshelfExts.cs
 					add /Models/Infrastructures/Exts/BookshelfEntityExts.cs
 					add /Models/Infrastructures/Exts/BookshelfItemEntityExts.cs
-				add BookRankRepository <== 還沒做
-				add BookHomeRepository
-				add BookSearchRepository
+				add BookRankRepository 
+				add BookHomeRepository 
+				add BookSearchRepository <== 還沒做
+
+[working on] 新建測試專案 TestProject.ReadingPlatform
+				add /Models/Services/Core/MemberServiceTest.cs

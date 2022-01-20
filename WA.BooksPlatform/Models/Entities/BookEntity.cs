@@ -39,7 +39,7 @@ namespace WA.BooksPlatform.Models.Entities
 		/// <param name="blurb">簡介</param>
 		/// <param name="items"></param>
 		/// <param name="status"></param>
-		public BookEntity(int id, string imageName, string name, string author, string blurb, List<BookChapterEntity> items, int status)
+		public BookEntity(int id, string imageName, string name, string author, string blurb, List<BookChapterEntity> items, bool status)
 			:this(name, author, blurb)
 		{
 			this.Id = id;
@@ -88,20 +88,10 @@ namespace WA.BooksPlatform.Models.Entities
 		private List<BookChapterEntity> Items;
 		public List<BookChapterEntity> GetItems() => this.Items;
 
-
-		private int _Status;
 		/// <summary>
 		/// 書籍狀態 1=上架；2=付費書籍；3=下架
 		/// </summary>
-		public int Status
-		{
-			get => this._Status;
-			set
-			{
-				new DataValid<int>(value, "書籍狀態").GreaterOrEqualThan(1).LessOrEqualThan(3);
-				this._Status = value;
-			}
-		}
+		public bool Status { get; set; }
 
 		/// <summary>
 		/// 總字數
@@ -150,7 +140,7 @@ namespace WA.BooksPlatform.Models.Entities
 			if(item == null) return;
 
 			item.Name = title;
-			item.Content = content;
+			item.Artical = content;
 		}
 	}
 }

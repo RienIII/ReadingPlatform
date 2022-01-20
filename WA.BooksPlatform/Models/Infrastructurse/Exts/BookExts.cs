@@ -20,5 +20,20 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				Blurb = book.Blurb
 			};
 		}
+		public static BookEntity ToBookEntity(this Book book)
+		{
+			var items = book.BookChapters.Select(x=>x.ToEntity()).ToList();
+
+			return new BookEntity
+			(
+				book.Id, 
+				book.ImageFileName, 
+				book.Name, 
+				book.Author.Name, 
+				book.Blurb, 
+				items, 
+				book.Status
+			);
+		}
 	}
 }
