@@ -4,3 +4,9 @@ D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.csproj.Assemb
 D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.csproj.CoreCompileInputs.cache
 D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.dll
 D:\專題\BooksPlatform.Solution\EmailHelper\obj\Debug\EmailHelper.pdb
+D:\C#專案\ReadingPlatform\EmailHelper\bin\Debug\EmailHelper.dll
+D:\C#專案\ReadingPlatform\EmailHelper\bin\Debug\EmailHelper.pdb
+D:\C#專案\ReadingPlatform\EmailHelper\obj\Debug\EmailHelper.csproj.AssemblyReference.cache
+D:\C#專案\ReadingPlatform\EmailHelper\obj\Debug\EmailHelper.csproj.CoreCompileInputs.cache
+D:\C#專案\ReadingPlatform\EmailHelper\obj\Debug\EmailHelper.dll
+D:\C#專案\ReadingPlatform\EmailHelper\obj\Debug\EmailHelper.pdb

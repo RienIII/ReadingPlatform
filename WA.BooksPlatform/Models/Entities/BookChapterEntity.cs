@@ -36,7 +36,7 @@ namespace WA.BooksPlatform.Models.Entities
 			get => _Artical;
 			set
 			{
-				new DataValid<string>(value, "內容").StringRequired().StringLengthGreaterThan(500);
+				new DataValid<string>(value, "內容").StringRequired().StringLengthGreaterThan(0);
 				_Artical = value;
 			}
 		}

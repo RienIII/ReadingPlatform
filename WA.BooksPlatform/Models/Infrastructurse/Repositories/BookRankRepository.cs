@@ -13,6 +13,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 	public class BookRankRepository : IBookRankRepository
 	{
 		private AppDbContext db;
+		private IBookRepository bookRepo = new BookRepository();
 		public BookRankRepository()
 		{
 			this.db = new AppDbContext();
@@ -21,33 +22,14 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		{
 			this.db = dataBase;
 		}
-		public bool IsExist(int bookId)
-		{
-			return db.Books.AsNoTracking().SingleOrDefault(x=>x.Id == bookId) != null;
-		}
-		public BookEntity Lord(int bookId, bool? status)
-		{
-			var query = db.Books.AsNoTracking();
+		public bool IsExist(int bookId) => bookRepo.IsExist(bookId);
 
-			if(status.HasValue)query.Where(x=>x.Status == status.Value);
+		public BookEntity Lord(int bookId, bool? status) => bookRepo.Lord(bookId, status);
 
-			return db.Books
-				.AsNoTracking()
-				.Include(x => x.BookChapters)
-				.SingleOrDefault(x => x.Id == bookId)
-				.ToBookEntity();
-		}
-		public List<BookBasicEntity> Search(int? categoryId, string bookName, bool? status)
-		{
-			var query = db.Books.AsNoTracking();
-
-			if (categoryId.HasValue) query.Where(x => x.CategoryId == categoryId);
-			if(!string.IsNullOrEmpty(bookName))query.Where(x=>x.Name.Contains(bookName));
-			if (status.HasValue) query.Where(x => x.Status == status);
-
-			var books = query.ToList().Select(x => x.ToEntity());
-
-			return books.OrderByDescending(x=>x.Collections).Take(10).ToList();
-		}
+		public List<BookBasicEntity> Search(BookRepositoryEntity entity)
+			=> bookRepo
+				.Search(entity)
+				.OrderByDescending(x => x.Collections)
+				.ToList();
 	}
 }

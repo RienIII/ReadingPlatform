@@ -27,6 +27,6 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 		/// </summary>
 		/// <param name="status">只找的到上架的書籍</param>
 		/// <returns></returns>
-		List<BookBasicEntity> GetAllBooks(bool? status);
+		List<BookBasicEntity> GetLatestUpdate(bool? status);
 	}
 }

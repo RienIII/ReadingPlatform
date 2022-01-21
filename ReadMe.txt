@@ -41,7 +41,12 @@
 					add /Models/Infrastructures/Exts/BookshelfItemEntityExts.cs
 				add BookRankRepository 
 				add BookHomeRepository 
-				add BookSearchRepository <== 還沒做
+				add BookSearchRepository 
+				add BookRepository 因為重複程式碼太多 
+					所以 BookRankRepository、BookHomeRepository、BookSearchRepository 
+					都呼叫 BookRepository 
+				modify IBookRepository, BookService
+					add BookRepositoryEntity 用來裝搜尋結果的內容，如果不用這個裝起來Repository的參數會很長
 
-[working on] 新建測試專案 TestProject.ReadingPlatform
+[V] 新建測試專案 TestProject.ReadingPlatform...
 				add /Models/Services/Core/MemberServiceTest.cs

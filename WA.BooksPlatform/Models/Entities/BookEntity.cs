@@ -26,7 +26,7 @@ namespace WA.BooksPlatform.Models.Entities
 			this.Name = name;
 			this.Author = author;
 			this.Blurb = blurb;
-			this.Status = 1;
+			this.Status = true;
 		}
 
 		/// <summary>

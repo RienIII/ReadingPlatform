@@ -38,17 +38,17 @@ namespace WA.BooksPlatform.Models.Services.Core
 		/// </summary>
 		/// <param name="bookName"></param>
 		/// <returns></returns>
-		public List<BookBasicEntity> Current(string bookName)
+		public List<BookBasicEntity> Current(BookRepositoryEntity entity)
 		{
-			return bookRepository.Search(null, bookName, true);
+			return bookRepository.Search(entity);
 		}
 		/// <summary>
 		/// 最近更新
 		/// </summary>
 		/// <returns></returns>
-		public List<BookBasicEntity> CurrentLatest()
+		public List<BookBasicEntity> CurrentLatestUpdate()
 		{
-			return bookNoSearchRepository.GetAllBooks(true);
+			return bookNoSearchRepository.GetLatestUpdate(true);
 		}
 	}
 }

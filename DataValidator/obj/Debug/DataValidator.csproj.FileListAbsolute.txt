@@ -4,3 +4,9 @@ D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.csproj.As
 D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.csproj.CoreCompileInputs.cache
 D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.dll
 D:\專題\BooksPlatform.Solution\DataValidator\obj\Debug\DataValidator.pdb
+D:\C#專案\ReadingPlatform\DataValidator\bin\Debug\DataValidator.dll
+D:\C#專案\ReadingPlatform\DataValidator\bin\Debug\DataValidator.pdb
+D:\C#專案\ReadingPlatform\DataValidator\obj\Debug\DataValidator.csproj.AssemblyReference.cache
+D:\C#專案\ReadingPlatform\DataValidator\obj\Debug\DataValidator.csproj.CoreCompileInputs.cache
+D:\C#專案\ReadingPlatform\DataValidator\obj\Debug\DataValidator.dll
+D:\C#專案\ReadingPlatform\DataValidator\obj\Debug\DataValidator.pdb

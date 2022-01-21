@@ -20,7 +20,6 @@ namespace WA.BooksPlatform.Models.EFModels
 		public virtual DbSet<Bookshelf> Bookshelfs { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
 		public virtual DbSet<Member> Members { get; set; }
-		public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

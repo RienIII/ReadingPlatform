@@ -12,6 +12,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 	public class MemberRepository : IMemberRepository
 	{
 		private AppDbContext db;
+		
 		public MemberRepository()
 		{
 			db = new AppDbContext();
@@ -45,7 +46,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 				.AsNoTracking()
 				.SingleOrDefault(x=>x.Account == account);
 
-			return member != null ? false : true;
+			return member == null ? false : true;
 		}
 
 		public bool IsExist(int memberId)

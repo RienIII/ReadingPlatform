@@ -14,8 +14,6 @@ namespace WA.BooksPlatform.Models.EFModels
 
         public int BookId { get; set; }
 
-        public DateTime? WatchTime { get; set; }
-
         public virtual Book Book { get; set; }
 
         public virtual Bookshelf Bookshelf { get; set; }

@@ -31,6 +31,6 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 		/// <param name="bookName">根據書名尋找</param>
 		/// <param name="status">書籍狀態；1=上架；2=下架</param>
 		/// <returns></returns>
-		List<BookBasicEntity> Search(int? categoryId, string bookName, bool? status);
+		List<BookBasicEntity> Search(BookRepositoryEntity entity);
 	}
 }
