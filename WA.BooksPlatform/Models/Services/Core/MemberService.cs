@@ -92,7 +92,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 
 			return(string.Compare(entity.Password, request.EnctryptedPassword) != 0) 
 				? LoginResponse.Fail("帳號密碼有誤") 
-				: LoginResponse.Success();
+				: LoginResponse.Success(entity.Roles);
 		}
 
 		/// <summary>
@@ -120,25 +120,22 @@ namespace WA.BooksPlatform.Models.Services.Core
 		/// </summary>
 		/// <param name="request"></param>
 		/// <exception cref="Exception"></exception>
-		public void ForgetPassword(ForgetPasswordRequest request, out bool isSuccess)
+		public RegisterResponse ForgetPassword(ForgetPasswordRequest request)
 		{
 			MemberEntity entity = repository.Lord(request.Id);
 			if (entity == null)
 			{
-				// 找不到對應的會員紀錄
-				isSuccess = false; 
-				return;
+				return RegisterResponse.Fail("找不到對應的會員紀錄");
 			}
-			if (string.Compare(entity.ConfirmCode, request.ConfirmCode) != 0)
+			if (string.Compare(entity.ResetPasswordCode, request.ConfirmCode) != 0)
 			{
-				// 找不到對應的會員紀錄
-				isSuccess = false;
-				return;
+				return RegisterResponse.Fail("找不到對應的會員紀錄");
 			}
 
-			isSuccess = true;
 			entity.Password = request.NewPassword;
 			repository.Update(entity);
+
+			return RegisterResponse.Success(null);
 		}
 
 		/// <summary>

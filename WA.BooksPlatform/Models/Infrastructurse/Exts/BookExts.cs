@@ -17,7 +17,8 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				Name = book.Name,
 				Author = book.Author.Name,
 				TotalWord = book.TotalWord,
-				Blurb = book.Blurb
+				Blurb = book.Blurb,
+				Collections = book.Collections
 			};
 		}
 		public static BookEntity ToBookEntity(this Book book)

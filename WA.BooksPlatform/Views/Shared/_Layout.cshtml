@@ -25,6 +25,18 @@
                     <li>@Html.ActionLink("書架", "Contact", "Home")</li>
                     <li>@Html.ActionLink("個人資訊", "#", "Home")</li>
                 </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="#">@User.Identity.Name</a></li>
+                        <li>@Html.ActionLink("登出", "Logout", "Members")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("登入", "Login", "Members")</li>
+                    }
+                </ul>
             </div>
         </div>
     </div>

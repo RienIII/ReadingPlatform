@@ -155,35 +155,32 @@ namespace TestProject.ReadingPlatform.Models.Services.Core
 			MemberEntity entity = null;
 			repo.Lord("Huang").Returns(entity);
 
-			bool isSuccess = true;
-			ForgetPasswordRequest request = new ForgetPasswordRequest { Id = 1, NewPassword = "456", ConfirmCode = "abc" };
-			service.ForgetPassword(request, out isSuccess);
+			ForgetPasswordRequest request = new ForgetPasswordRequest { Account = "Huang", NewPassword = "456", ConfirmCode = "abc" };
+			RegisterResponse response = service.ForgetPassword(request);
 
-			Assert.IsFalse(isSuccess);
+			Assert.IsFalse(response.IsSuccess);
 		}
 		[Test]
 		public void ForgetPasswordEmail_確認碼錯誤_ReturnFalse()
 		{
-			MemberEntity entity = new MemberEntity("Huang", "huang", "xx@xx", "123", null) { Id = 1, IsConfirmed = true };
+			MemberEntity entity = new MemberEntity("Huang", "huang", "xx@xx", "123", null) { Id = 1, IsConfirmed = true, ResetPasswordCode = null };
 			repo.Lord("Huang").Returns(entity);
 
-			bool isSuccess = true;
-			ForgetPasswordRequest request = new ForgetPasswordRequest { Id = 1, NewPassword = "456", ConfirmCode = "abc" };
-			service.ForgetPassword(request, out isSuccess);
+			ForgetPasswordRequest request = new ForgetPasswordRequest { Account = "Huang", NewPassword = "456", ConfirmCode = "abc" };
+			RegisterResponse response = service.ForgetPassword(request);
 
-			Assert.IsFalse(isSuccess);
+			Assert.IsFalse(response.IsSuccess);
 		}
 		[Test]
 		public void ForgetPasswordEmail_成功修改密碼_ReturnTrue()
 		{
-			MemberEntity entity = new MemberEntity("Huang", "huang", "xx@xx", "123", "abc") { Id = 1, IsConfirmed = true };
-			repo.Lord(1).Returns(entity);
+			MemberEntity entity = new MemberEntity("Huang", "huang", "xx@xx", "123", null) { Id = 1, IsConfirmed = true, ResetPasswordCode = "abc" };
+			repo.Lord("Huang").Returns(entity);
 
-			bool isSuccess = true;
-			ForgetPasswordRequest request = new ForgetPasswordRequest { Id = 1, NewPassword = "456", ConfirmCode = "abc" };
-			service.ForgetPassword(request, out isSuccess);
+			ForgetPasswordRequest request = new ForgetPasswordRequest { Account = "Huang", NewPassword = "456", ConfirmCode = "abc" };
+			RegisterResponse response = service.ForgetPassword(request);
 
-			Assert.AreEqual(true, isSuccess);
+			Assert.AreEqual(true, response.IsSuccess);
 		}
 		[Test]
 		public void ResetPassword_帳號不存在_ReturnFalse()

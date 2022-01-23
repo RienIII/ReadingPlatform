@@ -13,10 +13,19 @@ namespace ConsoleApp.ReadingPlatform
 {
 	internal class Program
 	{
+		/// <summary>
+		/// 用中斷點看查出來的東西是不是符合
+		/// </summary>
+		/// <param name="args"></param>
 		static void Main(string[] args)
 		{
-			Books books = new Books();
-			books.Lord();
+			// 點開書籍畫面
+			BookTest bookTest = new BookTest();
+			bookTest.Lord();
+			// 首頁熱門書籍
+			bookTest.Current();
+			// 首頁最近更新書籍
+			bookTest.GetLatest();
 		}
 	}
 	public class Member
@@ -36,16 +45,5 @@ namespace ConsoleApp.ReadingPlatform
 			RegisterResponse response = service.CreateNewMember(request);
 		}
 	}
-	public class Books
-	{
-		private IBookRepository bookSearchRepo = new BookSearchRepository();
-		private IBookRepository bookRankRepo = new BookRankRepository();
-		private IBookNoSearchRepository bookHomeRepo = new BookHomeRepository();
-		public void Lord()
-		{
-			BookService service = new BookService(bookSearchRepo, bookHomeRepo);
-
-			BookEntity book = service.AppearBook(1);
-		}
-	}
+	
 }

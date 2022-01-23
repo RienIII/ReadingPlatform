@@ -33,7 +33,7 @@
 				add /Models/ViewModels/BookRankVM.cs
 				add /Models/ViewModels/BookSearchVM.cs
 
-[working on] add Repository...
+[V] add Repository...
 				add MemberRepository
 				add BookshelfRepository
 					add /Models/Infrastructures/Exts/BookshelfExts.cs
@@ -50,3 +50,14 @@
 
 [V] 新建測試專案 TestProject.ReadingPlatform...
 				add /Models/Services/Core/MemberServiceTest.cs
+
+[working on] add MembersController...
+	add Action Register 註冊
+	add Action RegisterConfirm 註冊確認
+	add /Models/ViewModel/LoginVM.cs
+	add Action Login
+	add Action Logout
+	add /Models/ViewMOdels/ForgetPasswordVM.cs
+	add /Models/Services/UseCases/LoginCommand.cs
+	add Action ForgetPassword
+	會員中心 : 修改個人資料、修改密碼 <=====

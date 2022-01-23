@@ -167,6 +167,8 @@
     <Compile Include="Models\Infrastructurse\Exts\BookshelfExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookshelfItemEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookshelfItemExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\ForgetPasswordResetVMExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\LoginVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\MemberEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\MemberExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterRequestExts.cs" />
@@ -193,11 +195,15 @@
     <Compile Include="Models\DTOs\RegisterResponse.cs" />
     <Compile Include="Models\Services\Core\MemberService.cs" />
     <Compile Include="Models\Services\UseCases\BookshelfCommand.cs" />
+    <Compile Include="Models\Services\UseCases\ForgetPasswordCommand.cs" />
     <Compile Include="Models\Services\UseCases\ImageFileCommand.cs" />
+    <Compile Include="Models\Services\UseCases\LoginCommand.cs" />
     <Compile Include="Models\Services\UseCases\RegisterCommand.cs" />
     <Compile Include="Models\ViewModels\BookRankVM.cs" />
     <Compile Include="Models\ViewModels\BookshelfVM.cs" />
     <Compile Include="Models\ViewModels\BookHomeVM.cs" />
+    <Compile Include="Models\ViewModels\ForgetPasswordVM.cs" />
+    <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\ResetProfileVM.cs" />
     <Compile Include="Models\ViewModels\BookSearchVM.cs" />
@@ -239,11 +245,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Members\ActiveRegister.cshtml" />
+    <Content Include="Views\Members\Register.cshtml" />
+    <Content Include="Views\Members\RegisterConfirm.cshtml" />
+    <Content Include="Views\Members\Login.cshtml" />
+    <Content Include="Views\Members\ForgetView.cshtml" />
+    <Content Include="Views\Members\ForgetPasswordResetView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Books\" />
-    <Folder Include="Views\Members\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

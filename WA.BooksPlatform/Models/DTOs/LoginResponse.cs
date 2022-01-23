@@ -9,10 +9,12 @@ namespace WA.BooksPlatform.Models.DTOs
 	{
 		public bool IsSuccess { get; set; }
 		public string ErrorMessage { get; set; }
-		public static LoginResponse Success()
+		public string Roles { get; set; }
+		public static LoginResponse Success(string roles)
 			=>new LoginResponse
 			{
-				IsSuccess = true
+				IsSuccess = true,
+				Roles = roles
 			};
 		
 		public static LoginResponse Fail(string errorMsg)
