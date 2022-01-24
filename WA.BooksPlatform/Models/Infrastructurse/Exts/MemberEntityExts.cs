@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using WA.BooksPlatform.Entities;
 using WA.BooksPlatform.Models.EFModels;
+using WA.BooksPlatform.Models.ViewModels;
 
 namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 {
@@ -24,6 +25,15 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				ImageFileName = entity.ImageFileName,
 				CreateTime = DateTime.Now,
 				Roles = entity.Roles
+			};
+		}
+		public static ResetProfileVM ToVM(this MemberEntity entity)
+		{
+			return new ResetProfileVM
+			{
+				Name = entity.Name,
+				Email = entity.Email,
+				ImageFileName = entity.ImageFileName
 			};
 		}
 	}

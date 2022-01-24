@@ -9,6 +9,38 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("LOGO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("分類", "Index", "Home")</li>
+                    <li>@Html.ActionLink("搜尋", "Contact", "Home")</li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Members/Index/">@User.Identity.Name</a></li>
+                        <li>@Html.ActionLink("登出", "Logout", "Members")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("註冊", "Register", "Members")</li>
+                        <li>@Html.ActionLink("登入", "Login", "Members")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
@@ -23,19 +55,7 @@
                     <li>@Html.ActionLink("首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("排行", "About", "Home")</li>
                     <li>@Html.ActionLink("書架", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("個人資訊", "#", "Home")</li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li><a href="#">@User.Identity.Name</a></li>
-                        <li>@Html.ActionLink("登出", "Logout", "Members")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("登入", "Login", "Members")</li>
-                    }
+                    <li>@Html.ActionLink("個人資訊", "Index", "Members")</li>
                 </ul>
             </div>
         </div>

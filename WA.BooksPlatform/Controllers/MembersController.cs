@@ -87,7 +87,7 @@ namespace WA.BooksPlatform.Controllers
                 ModelState.AddModelError(string.Empty, response.ErrorMessage);
                 return View(model);
 			}
-            LoginCommand command = new LoginCommand();
+            LoginCommand command = new LoginCommand(memberRepo);
 
             HttpCookie cookie;
             string url = command.ProcessLogin(model.Account, false, out cookie);
@@ -120,7 +120,7 @@ namespace WA.BooksPlatform.Controllers
                 + "://"
                 + Request.Url.Authority
                 + Url.Content("~/")
-                + "Members/#?memberId={0}&resetPasswordCode={1}";
+                + "Members/ForgetPasswordReset?memberId={0}&resetPasswordCode={1}";
             if (response.IsSuccess)
 			{
                 forget.Execute(response, urlTemplate);
@@ -164,6 +164,57 @@ namespace WA.BooksPlatform.Controllers
         public ActionResult Index()
 		{
             return View();
+		}
+        [Authorize]
+        public ActionResult EditProfile()
+		{
+            string editUser = User.Identity.Name;
+            var entity = memberRepo.Lord(editUser);
+            ResetProfileVM model = entity.ToVM();
+            model.UserAccount = editUser;
+
+            return View(model);
+		}
+        [HttpPost]
+        public ActionResult EditProfile(ResetProfileVM model, HttpPostedFileBase file)
+		{
+            if(!ModelState.IsValid)return View(model);
+
+            model.File = file;
+            ResetDataCommand command = new ResetDataCommand(memberRepo);
+            string path = Server.MapPath("~/Files/MemberImages/");
+
+			try
+			{
+                command.ResetProfile(path, model);
+                return RedirectToAction("Index", "Members");
+            }
+            catch (Exception ex)
+			{
+                ModelState.AddModelError (string.Empty, ex.Message);
+                return View();
+			}
+		}
+        [Authorize]
+        public ActionResult EditPassword()
+		{
+            return View();
+		}
+        [HttpPost]
+        public ActionResult EditPassword(ResetPasswordVM model)
+		{
+            if (!ModelState.IsValid) return View(model);
+
+            ResetDataCommand command = new ResetDataCommand(memberRepo);
+            ResetPasswordResponse response = command.ResetPassword(model, User.Identity.Name);
+
+			if (response.IsSuccess)
+			{
+                return RedirectToAction("Logout", "Members");
+			}
+
+            ModelState.AddModelError(string.Empty, response.ErrorMessage);
+            return View(model);
 		}
     }
 }

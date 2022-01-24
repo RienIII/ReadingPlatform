@@ -52,12 +52,17 @@
 				add /Models/Services/Core/MemberServiceTest.cs
 
 [working on] add MembersController...
-	add Action Register 註冊
-	add Action RegisterConfirm 註冊確認
-	add /Models/ViewModel/LoginVM.cs
-	add Action Login
-	add Action Logout
-	add /Models/ViewMOdels/ForgetPasswordVM.cs
-	add /Models/Services/UseCases/LoginCommand.cs
-	add Action ForgetPassword
-	會員中心 : 修改個人資料、修改密碼 <=====
+				add Action Register 註冊
+				add Action RegisterConfirm 註冊確認
+				add /Models/ViewModel/LoginVM.cs
+				add Action Login
+				add Action Logout
+				add /Models/ViewMOdels/ForgetPasswordVM.cs
+				add /Models/Services/UseCases/LoginCommand.cs
+				add Action ForgetPassword
+				會員中心 : 修改個人資料、修改密碼 <=====
+				add Action EditProfile
+				add /Models/ViewModels/EditProfileVM.cs
+				add /Models/Services/UseCases/ResetDataCommand.cs
+				add /Models/ViewModels/ResetProfileVM.cs
+				add /Infrastructures/Exts/ResetPasswordVMExts.cs

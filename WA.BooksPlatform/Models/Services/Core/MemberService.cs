@@ -135,7 +135,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 			entity.Password = request.NewPassword;
 			repository.Update(entity);
 
-			return RegisterResponse.Success(null);
+			return RegisterResponse.Success(entity);
 		}
 
 		/// <summary>
@@ -168,7 +168,9 @@ namespace WA.BooksPlatform.Models.Services.Core
 			MemberEntityNoPassword entity = repository.Lord(request.UserAccount);
 			if (entity == null) throw new Exception("帳號不存在");
 
-			entity = request.ToEntity();
+			entity.Name = request.Name;
+			entity.Email = request.Email;
+			entity.ImageFileName = request.ImageFileName;
 
 			repository.Update(entity);
 		}

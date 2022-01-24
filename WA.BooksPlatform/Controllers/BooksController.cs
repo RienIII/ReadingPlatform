@@ -9,7 +9,7 @@ namespace WA.BooksPlatform.Controllers
     public class BooksController : Controller
     {
         // GET: Books
-        public ActionResult Index()
+        public ActionResult Index(int bookId)
         {
             return View();
         }

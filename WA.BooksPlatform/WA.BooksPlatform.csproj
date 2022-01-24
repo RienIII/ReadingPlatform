@@ -173,6 +173,7 @@
     <Compile Include="Models\Infrastructurse\Exts\MemberExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterVMExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\ResetPasswordVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ResetProfileRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ResetProfileVMExts.cs" />
     <Compile Include="Models\Infrastructurse\ForPages.cs" />
@@ -196,7 +197,7 @@
     <Compile Include="Models\Services\Core\MemberService.cs" />
     <Compile Include="Models\Services\UseCases\BookshelfCommand.cs" />
     <Compile Include="Models\Services\UseCases\ForgetPasswordCommand.cs" />
-    <Compile Include="Models\Services\UseCases\ImageFileCommand.cs" />
+    <Compile Include="Models\Services\UseCases\ResetDataCommand.cs" />
     <Compile Include="Models\Services\UseCases\LoginCommand.cs" />
     <Compile Include="Models\Services\UseCases\RegisterCommand.cs" />
     <Compile Include="Models\ViewModels\BookRankVM.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Models\ViewModels\ForgetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
+    <Compile Include="Models\ViewModels\ResetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\ResetProfileVM.cs" />
     <Compile Include="Models\ViewModels\BookSearchVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -251,9 +253,16 @@
     <Content Include="Views\Members\Login.cshtml" />
     <Content Include="Views\Members\ForgetView.cshtml" />
     <Content Include="Views\Members\ForgetPasswordResetView.cshtml" />
+    <Content Include="Views\Members\ForgetPassword.cshtml" />
+    <Content Include="Views\Members\ForgetPasswordReset.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\Members\EditProfile.cshtml" />
+    <Content Include="Views\Members\EditPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\BookImages\" />
+    <Folder Include="Files\MemberImages\" />
     <Folder Include="Views\Books\" />
   </ItemGroup>
   <ItemGroup>

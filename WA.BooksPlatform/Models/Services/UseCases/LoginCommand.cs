@@ -3,17 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using WA.BooksPlatform.Entities;
 using WA.BooksPlatform.Models.DTOs;
+using WA.BooksPlatform.Models.Services.Core.Interfaces;
 using WA.BooksPlatform.Models.ViewModels;
 
 namespace WA.BooksPlatform.Models.Services.UseCases
 {
 	public class LoginCommand
 	{
+		private IMemberRepository memberRepo;
+		public LoginCommand(IMemberRepository repo)
+		{
+			this.memberRepo = repo;
+		}
+		/// <summary>
+		/// 找會員的權限
+		/// </summary>
+		/// <param name="account"></param>
+		/// <returns></returns>
+		private string LordRoles(string account)
+		{
+			MemberEntityNoPassword member = memberRepo.Lord(account);
+
+			return member.Roles;
+		}
 		public string ProcessLogin(string account, bool rememberMe, out HttpCookie cookie)
 		{
 			// 取得使用者權限
-			string role = string.Empty;
+			string role = LordRoles(account);
 
 			// 將 userID, level 存到 cookie 中
 			// 建立認證票

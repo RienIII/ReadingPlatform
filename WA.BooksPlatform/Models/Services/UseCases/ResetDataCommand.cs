@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WA.BooksPlatform.Models.DTOs;
 using WA.BooksPlatform.Models.Infrastructurse.Exts;
 using WA.BooksPlatform.Models.Services.Core;
 using WA.BooksPlatform.Models.Services.Core.Interfaces;
@@ -9,17 +10,17 @@ using WA.BooksPlatform.Models.ViewModels;
 
 namespace WA.BooksPlatform.Models.Services.UseCases
 {
-	public class ImageFileCommand
+	public class ResetDataCommand
 	{
 		private IMemberRepository repository;
-		public ImageFileCommand(IMemberRepository repo)
+		private MemberService service;
+		public ResetDataCommand(IMemberRepository repo)
 		{
 			this.repository = repo;
+			this.service = new MemberService(repository);
 		}
 		public void ResetProfile(string path, ResetProfileVM model)
 		{
-			MemberService service = new MemberService(repository);
-
 			string newImageFileName = SaveFile(path, model.File);
 			string originalFileName = service.LordFileName(model.UserAccount);
 			string fileName = string.IsNullOrEmpty(newImageFileName) ? originalFileName : newImageFileName;
@@ -27,7 +28,13 @@ namespace WA.BooksPlatform.Models.Services.UseCases
 
 			service.ResetProfile(model.ToRequest());
 
-			if(!string.IsNullOrEmpty(originalFileName))DeleteFile(path, originalFileName);
+			if(!string.IsNullOrEmpty(newImageFileName))DeleteFile(path, originalFileName);
+		}
+		public ResetPasswordResponse ResetPassword(ResetPasswordVM model, string userAccount)
+		{
+			ResetPasswordResponse response = service.ResetPassword(model.ToRequest(userAccount));
+
+			return response;
 		}
 
 		/// <summary>
@@ -61,7 +68,7 @@ namespace WA.BooksPlatform.Models.Services.UseCases
 		/// </summary>
 		/// <param name="path">檔案路徑</param>
 		/// <param name="fileName">舊檔名稱</param>
-		public void DeleteFile(string path, string fileName)
+		private void DeleteFile(string path, string fileName)
 		{
 			// 找出原始檔案的路徑
 			string fullName = System.IO.Path.Combine(path, fileName);

@@ -53,7 +53,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		{
 			var member = db.Members.Find(memberId);
 
-			return member != null ? false : true;
+			return member == null ? false : true;
 		}
 
 		public MemberEntity Lord(string account)

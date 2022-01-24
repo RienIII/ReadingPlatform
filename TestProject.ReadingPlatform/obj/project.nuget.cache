@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2sJrr/WcUTdIWycZ19/igEx9m2RLDiuVcUxaarySz2oyr99FinZC790Z3qdGisclm+JIkEgM4bW6oecUOyeQbQ==",
+  "dgSpecHash": "C5xthEJUmboDyHNolF+RDqEG5oPJo1sm3H3c6bw6Nz2/w68DeKaVcKWJ3jOADOc7ZEX2dUUU16jGpnE1KTdFpQ==",
   "success": true,
-  "projectFilePath": "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
+  "projectFilePath": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
