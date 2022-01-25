@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using WA.BooksPlatform.Entities;
 using WA.BooksPlatform.Models.EFModels;
+using WA.BooksPlatform.Models.Entities;
 using WA.BooksPlatform.Models.Infrastructurse.Exts;
 using WA.BooksPlatform.Models.Services.Core.Interfaces;
 
@@ -41,13 +42,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		}
 
 		public bool IsExist(string account)
-		{
-			var member = db.Members
-				.AsNoTracking()
-				.SingleOrDefault(x=>x.Account == account);
-
-			return member == null ? false : true;
-		}
+			=>db.Members.AsNoTracking().SingleOrDefault(x => x.Account == account) != null;
 
 		public bool IsExist(int memberId)
 		{
@@ -75,18 +70,20 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 				.ToEntity();
 		}
 
+		public bool IsAuthorExist(string author)
+			=>db.Authors.AsNoTracking().SingleOrDefault(x=>x.Name == author) != null;
+
 		public void Update(MemberEntityNoPassword entity)
 		{
 			var member = db.Members.SingleOrDefault(x=>x.Account == entity.Account);
 
-			member.Account = entity.Account;
 			member.Email = entity.Email;
 			member.Name = entity.Name;
 			member.ImageFileName = entity.ImageFileName;
 			member.IsConfirmed = entity.IsConfirmed;
 			member.ConfirmCode = entity.ConfirmCode;
 			member.ResetPasswordCode = entity.ResetPasswordCode;
-			member.CreateTime = entity.CreateTime;
+			member.Roles = entity.Roles;
 
 			db.SaveChanges();
 		}
@@ -97,6 +94,14 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 
 			member.Password = entity.EnctryptedPassword;
 
+			db.SaveChanges();
+		}
+
+		public void BecomeAuthor(int memberId, string author)
+		{
+			Author becomAuthor = new Author() { Name = author, MemberId = memberId};
+			
+			db.Authors.Add(becomAuthor);
 			db.SaveChanges();
 		}
 	}

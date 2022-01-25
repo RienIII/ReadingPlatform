@@ -131,6 +131,8 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Models\DTOs\BecomeAuthorRequest.cs" />
+    <Compile Include="Models\DTOs\BecomeAuthorResponse.cs" />
     <Compile Include="Models\EFModels\AppDbContext.cs" />
     <Compile Include="Models\EFModels\Author.cs" />
     <Compile Include="Models\EFModels\Book.cs" />
@@ -160,6 +162,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Infrastructurse\Exts\AuthorExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\AuthorVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookChapterEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookChapterExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookEntityExts.cs" />
@@ -212,6 +216,7 @@
     <Compile Include="Models\ViewModels\BookVM.cs" />
     <Compile Include="Models\ViewModels\CategoryVM.cs" />
     <Compile Include="Models\ViewModels\ForgetPasswordVM.cs" />
+    <Compile Include="Models\ViewModels\AuthorVM.cs" />
     <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\ResetPasswordVM.cs" />
@@ -272,6 +277,7 @@
     <Content Include="Views\Home\CategoryBooks.cshtml" />
     <Content Include="Views\Home\Bookshelf.cshtml" />
     <Content Include="Views\Home\Rank.cshtml" />
+    <Content Include="Views\Members\BecomeAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

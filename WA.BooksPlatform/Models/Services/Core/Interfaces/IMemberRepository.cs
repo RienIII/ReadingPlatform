@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WA.BooksPlatform.Entities;
+using WA.BooksPlatform.Models.Entities;
 
 namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 {
@@ -40,10 +41,24 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 		MemberEntity Lord(int memberId);
 
 		/// <summary>
+		/// 作者資訊是否存在
+		/// </summary>
+		/// <param name="author">作者名稱</param>
+		/// <returns></returns>
+		bool IsAuthorExist(string author);
+
+		/// <summary>
 		/// 啟用會員帳號，加入Roles:General一般會員
 		/// </summary>
 		/// <param name="memberId">需要啟用的會員ID</param>
 		void ActiveRegister(int memberId);
+
+		/// <summary>
+		/// 成為作者
+		/// </summary>
+		/// <param name="memberId">會員ID</param>
+		/// <param name="author">作者名稱</param>
+		void BecomeAuthor(int memberId, string author);
 
 		/// <summary>
 		/// 除了密碼和啟用會員資格之外都可以用來更新資料

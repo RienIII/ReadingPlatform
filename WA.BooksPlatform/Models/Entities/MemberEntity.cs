@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using DataValidator;
 using HashUtilities;
+using WA.BooksPlatform.Models.Entities;
 
 namespace WA.BooksPlatform.Entities
 {
@@ -78,7 +79,7 @@ namespace WA.BooksPlatform.Entities
 			get => _ImageFileName;
 			set => _ImageFileName = string.IsNullOrEmpty(value) ? string.Empty : value;
 		}
-
+		public AuthorEntity Author { get; set; }
 		/// <summary>
 		/// 是否有啟用帳號
 		/// </summary>

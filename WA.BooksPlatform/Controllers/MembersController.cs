@@ -163,6 +163,9 @@ namespace WA.BooksPlatform.Controllers
         [Authorize]
         public ActionResult Index()
 		{
+            var member = memberRepo.Lord(User.Identity.Name);
+            ViewBag.Roles = member.Roles;
+
             return View();
 		}
         [Authorize]
@@ -216,6 +219,25 @@ namespace WA.BooksPlatform.Controllers
             ModelState.AddModelError(string.Empty, response.ErrorMessage);
             return View(model);
 		}
+        [Authorize]
+        public ActionResult BecomeAuthor()
+		{
+            return View();
+		}
+        [HttpPost]
+        public ActionResult BecomeAuthor(AuthorVM model)
+        {
+            if(!ModelState.IsValid) return View(model);
 
+            BecomeAuthorResponse response = memberService.BecomeAuthor(model.ToRequest(User.Identity.Name));
+
+			if (response.IsSuccess)
+			{
+                return RedirectToAction("Index", "Members");
+			}
+
+            ModelState.AddModelError(string.Empty, response.ErrorMessage);
+            return View(model);
+        }
     }
 }

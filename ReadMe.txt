@@ -82,5 +82,10 @@
 				add private Action LordBook 找到書籍給 Index ChooseChapter Chapter 用
 				modify BookEntityExts.cs
 	
-[working on] modify HomeController... <=====
-	
+[working on] modify HomeController... 
+
+[working on] modify MemberController, MemberService, IMemberRepository...<=====
+	Controller : add Action BecomeAuthor
+		add /Models/ViewModels/AuthorVM.cs
+	Service : add Method BecomeAuthor
+	IRepo : add Method IsAuthorExist, BecomeAuthor

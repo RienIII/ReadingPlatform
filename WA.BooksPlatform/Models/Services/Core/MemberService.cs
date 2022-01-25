@@ -188,5 +188,27 @@ namespace WA.BooksPlatform.Models.Services.Core
 			
 			return entity.ImageFileName;
 		}
+
+		public BecomeAuthorResponse BecomeAuthor(BecomeAuthorRequest request)
+		{
+			if (repository.IsAuthorExist(request.Author))
+			{
+				return BecomeAuthorResponse.Fail("作者名稱已被其他人使用!");
+			}
+
+			MemberEntityNoPassword member = repository.Lord(request.UserName);
+
+			if (member.Author != null)
+			{
+				return BecomeAuthorResponse.Fail("您已經成為作者");
+			}
+
+			repository.BecomeAuthor(member.Id, request.Author);
+
+			member.Roles = member.Roles + ",Author";
+			repository.Update(member);
+
+			return BecomeAuthorResponse.Success();
+		}
 	}
 }

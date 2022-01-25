@@ -23,6 +23,6 @@ namespace WA.BooksPlatform.Models.Entities
 				_Name = value;
 			}
 		}
-		public int MemberId { get; set; }
+		public int? MemberId { get; set; }
 	}
 }

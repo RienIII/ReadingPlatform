@@ -1,9 +1,19 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    var roles = (string)ViewBag.Roles;
 }
 
-<h2>Index</h2>
+<h2>會員中心</h2>
 
 <a href="/Members/EditProfile/" class="btn btn-default">修改基本資料</a>
 <a href="/Members/EditPassword/" class="btn btn-default">修改密碼</a>
+
+@if (roles.Contains("Author"))
+{
+    <a href="/Members/#/" class="btn btn-default">管理作品</a>
+}
+else
+{
+    <a href="/Members/BecomeAuthor/" class="btn btn-default">成為作者</a>
+}
