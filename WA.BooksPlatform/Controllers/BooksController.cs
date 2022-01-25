@@ -33,6 +33,8 @@ namespace WA.BooksPlatform.Controllers
         {
             return View(LordBook(bookId));
         }
+
+        [Authorize]
         /// <summary>
         /// 點開目錄會看到 有哪些章節
         /// </summary>
@@ -45,6 +47,8 @@ namespace WA.BooksPlatform.Controllers
 
             return View(LordBook(bookId));
         }
+
+        [Authorize(Roles = "General,VIP")]
         /// <summary>
         /// 呈現章節內容
         /// </summary>

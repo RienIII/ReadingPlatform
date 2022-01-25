@@ -68,17 +68,19 @@
 				add /Models/ViewModels/ResetProfileVM.cs
 				add /Infrastructures/Exts/ResetPasswordVMExts.cs
 
-[working on] add BooksController...
-	add BookChapter.cs
-	add BookChapterVM.cs
-	add BookVM.cs
-	add /Models/Infrastructures/Exts/BookChapterEntityExts.cs
-	modify /Models/Infrastructures/Exts/BookEntityExts.cs
-	add Action Index 點開書籍可以看到書籍資料
-	add Action ChooseChapter 選擇章節
-		add Class ChapterLink => Action DisplayChapter
-	add Action Chapter 顯示章節內容
-		add private Action ChapterPages 分頁用
-	add private Action LordBook 找到書籍給 Index ChooseChapter Chapter 用
-	modify BookEntityExts.cs
+[V] add BooksController...
+				add BookChapter.cs
+				add BookChapterVM.cs
+				add BookVM.cs
+				add /Models/Infrastructures/Exts/BookChapterEntityExts.cs
+				modify /Models/Infrastructures/Exts/BookEntityExts.cs
+				add Action Index 點開書籍可以看到書籍資料
+				add Action ChooseChapter 選擇章節
+					add Class ChapterLink => Action DisplayChapter
+				add Action Chapter 顯示章節內容
+					add private Action ChapterPages 分頁用
+				add private Action LordBook 找到書籍給 Index ChooseChapter Chapter 用
+				modify BookEntityExts.cs
+	
+[working on] modify HomeController...
 	

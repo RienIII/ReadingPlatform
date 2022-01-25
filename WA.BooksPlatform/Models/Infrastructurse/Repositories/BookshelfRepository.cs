@@ -49,27 +49,23 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 			Bookshelf efInDb = db.Bookshelfs
 				.Include(x=>x.BookshelfItems)
 				.SingleOrDefault(x=>x.Id == entity.Id);
+			BookshelfItem efItemInDb = db.BookshelfItems.SingleOrDefault(x=>x.BookshelfId == entity.Id);
 
-			List<BookshelfItem> efItemInDb = efInDb.BookshelfItems.ToList();
-
-			var delectBook = efItemInDb
-				.Select(x => x.BookId)
-				.Except(bookshelf.BookshelfItems.Select(x => x.BookId))
-				.ToList();
-
-			foreach (var item in delectBook)
+			if (efInDb.BookshelfItems.Count>0)
 			{
-				var delectItem = efInDb.BookshelfItems.SingleOrDefault(x => x.BookId == item);
+				db.BookshelfItems.Remove(efItemInDb);
 
-				db.Entry(item).State = EntityState.Modified;
+				foreach (var item in bookshelf.BookshelfItems)
+				{
+					db.BookshelfItems.Add(item);
+				}
+				db.SaveChanges();
+				return;
 			}
 
 			foreach (var item in bookshelf.BookshelfItems)
 			{
-				if(item.Id == 0)
-				{
-					efInDb.BookshelfItems.Add(item);
-				}
+				db.BookshelfItems.Add(item);
 			}
 
 			db.SaveChanges();

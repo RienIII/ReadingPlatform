@@ -1,0 +1,72 @@
+﻿@model WA.BooksPlatform.Models.ViewModels.BookSearchVM
+
+@{
+    ViewBag.Title = "CategoryBooks";
+}
+
+<h2>尋找書籍</h2>
+
+@if (!Model.Books.Count.Equals(0))
+{
+    <div class="row">
+        @foreach (var item in Model.Books)
+        {
+            <a href="/Books/Index?bookId=@item.Id">
+                <div class="row col-md-12">
+                    <div class="col-md-9">
+                        <img src="~/Files/BookImages/" style="width: 100%; height: 100%" />
+                    </div>
+                    <div class="col-md-3">
+                        <h4>@item.Name</h4>
+                        @item.Author&emsp;@item.TotalWord
+                        <br />
+                        @item.BirefBlurb
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+}
+else
+{
+    <tr>
+        <td>查無資料</td>
+    </tr>
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            @if (Model.ForPages.NowPage > 1)
+            {
+                @Html.ActionLink("<< ", "CategoryBooks", new { pages = 1, categoryId=Model.CategoryId, search = Model.Search })
+                @Html.ActionLink("<", "CategoryBooks", new { pages = Model.ForPages.NowPage - 1, categoryId = Model.CategoryId, search = Model.Search })
+            }
+        </li>
+        @for (var intPage = (Model.ForPages.NowPage - 6); intPage < (Model.ForPages.NowPage + 6); intPage++)
+        {
+            if ((intPage > 0) && (intPage <= Model.ForPages.MaxPage))
+            {
+                if (intPage == Model.ForPages.NowPage)
+                {
+                    <li class="active">
+                        @Html.ActionLink(intPage.ToString(), "CategoryBooks", new { pages = intPage, categoryId = Model.CategoryId, search = Model.Search })
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Html.ActionLink(intPage.ToString(), "CategoryBooks", new { pages = intPage, categoryId = Model.CategoryId, search = Model.Search })
+                    </li>
+                }
+            }
+        }
+        <li>
+            @if (Model.ForPages.NowPage < Model.ForPages.MaxPage)
+            {
+                @Html.ActionLink(">", "CategoryBooks", new { pages = Model.ForPages.NowPage + 1, categoryId = Model.CategoryId, search = Model.Search })
+                @Html.ActionLink(" >>", "CategoryBooks", new { pages = Model.ForPages.MaxPage, categoryId = Model.CategoryId, search = Model.Search })
+            }
+        </li>
+    </ul>
+</nav>

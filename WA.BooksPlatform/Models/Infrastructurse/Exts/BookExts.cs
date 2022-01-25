@@ -14,11 +14,15 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 			return new BookBasicEntity
 			{
 				Id = book.Id,
+				ImageFileName = book.ImageFileName,
 				Name = book.Name,
 				Author = book.Author.Name,
 				TotalWord = book.TotalWord,
 				Blurb = book.Blurb,
-				Collections = book.Collections
+				Collections = book.Collections,
+				Likes = book.Likes,
+				Clicks = book.Clicks,
+				ModifiedTime = book.ModifiedTime
 			};
 		}
 		public static BookEntity ToBookEntity(this Book book)

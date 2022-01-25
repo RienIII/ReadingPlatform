@@ -23,6 +23,11 @@ namespace WA.BooksPlatform.Models.ViewModels
 		public string Search { get; set; }
 
 		/// <summary>
+		/// 根據分類ID尋找
+		/// </summary>
+		public int? CategoryId { get; set; }
+
+		/// <summary>
 		/// 分頁
 		/// </summary>
 		public ForPages ForPages { get; set; }

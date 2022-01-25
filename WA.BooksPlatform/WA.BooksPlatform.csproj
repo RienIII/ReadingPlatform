@@ -168,6 +168,7 @@
     <Compile Include="Models\Infrastructurse\Exts\BookshelfExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookshelfItemEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookshelfItemExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\CategoryExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ForgetPasswordResetVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\LoginVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\MemberEntityExts.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Models\Infrastructurse\Repositories\BookRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\BookSearchRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\BookshelfRepository.cs" />
+    <Compile Include="Models\Infrastructurse\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\MemberRepository.cs" />
     <Compile Include="Models\Services\Core\BookService.cs" />
     <Compile Include="Models\Services\Core\BookshelfService.cs" />
@@ -192,6 +194,7 @@
     <Compile Include="Models\Services\Core\Interfaces\IBookRepository.cs" />
     <Compile Include="Models\Services\Core\Interfaces\IBookSearchRepository.cs" />
     <Compile Include="Models\Services\Core\Interfaces\IBookshelfRepository.cs" />
+    <Compile Include="Models\Services\Core\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Models\Services\Core\Interfaces\IMemberRepository.cs" />
     <Compile Include="Models\DTOs\RegisterRequest.cs" />
     <Compile Include="Models\DTOs\RegisterResponse.cs" />
@@ -207,6 +210,7 @@
     <Compile Include="Models\ViewModels\BookshelfVM.cs" />
     <Compile Include="Models\ViewModels\BookHomeVM.cs" />
     <Compile Include="Models\ViewModels\BookVM.cs" />
+    <Compile Include="Models\ViewModels\CategoryVM.cs" />
     <Compile Include="Models\ViewModels\ForgetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
@@ -248,7 +252,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Members\ActiveRegister.cshtml" />
@@ -265,6 +268,9 @@
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Books\ChooseChapter.cshtml" />
     <Content Include="Views\Books\Chapter.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\CategoryBooks.cshtml" />
+    <Content Include="Views\Home\Bookshelf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

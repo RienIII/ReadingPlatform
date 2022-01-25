@@ -74,9 +74,9 @@ namespace WA.BooksPlatform.Models.Services.Core
 		{
 			var bookshelf = Current(memberId);
 
-			var book = bookRepository.Lord(bookId, true).ToBookBasic();
+			var bookItem = bookRepository.Lord(bookId, true).ToBookshelfItem();
 
-			bookshelf.AddItem(book);
+			bookshelf.AddItem(bookItem);
 
 			bookshelfRepository.Save(bookshelf);
 		}

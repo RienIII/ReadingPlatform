@@ -11,6 +11,7 @@ namespace WA.BooksPlatform.Models.Entities
 	public class BookBasicEntity
 	{
 		public int Id { get; set; }
+		public string ImageFileName { get; set; }
 		/// <summary>
 		/// 書名
 		/// </summary>
@@ -44,9 +45,11 @@ namespace WA.BooksPlatform.Models.Entities
 		/// 收藏數
 		/// </summary>
 		public int Collections { get; set; }
+		public int Likes { get; set; }
+		public int Clicks { get; set; }
 		/// <summary>
 		/// 異動日期
 		/// </summary>
-		public DateTime ModifiedTime { get; set; }
+		public DateTime? ModifiedTime { get; set; }
 	}
 }

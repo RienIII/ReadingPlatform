@@ -40,11 +40,11 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 
 		public List<BookBasicEntity> Search(BookRepositoryEntity entity)
 		{
-			var query = db.Books.AsNoTracking();
+			IQueryable<Book> query = db.Books.AsNoTracking();
 
-			if (entity.CategoryId.HasValue) query.Where(x => x.CategoryId == entity.CategoryId);
-			if (!string.IsNullOrEmpty(entity.BookName)) query.Where(x => x.Name.Contains(entity.BookName));
-			if (entity.Status.HasValue) query.Where(x => x.Status == entity.Status);
+			if (entity.CategoryId.HasValue) query = query.Where(x => x.CategoryId == entity.CategoryId);
+			if (!string.IsNullOrEmpty(entity.BookName))query = query.Where(x => x.Name.Contains(entity.BookName));
+			if (entity.Status.HasValue) query = query.Where(x => x.Status == entity.Status);
 
 			if(entity.ForPages == null)
 			{

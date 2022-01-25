@@ -49,13 +49,15 @@ namespace WA.BooksPlatform.Models.Entities
 		/// </summary>
 		/// <param name="bookItem">書籍</param>
 		/// <exception cref="Exception">可能新增的書籍已經不存在</exception>
-		public void AddItem(BookBasicEntity bookItem)
+		public void AddItem(BookshelfItemEntity bookItem)
 		{
 			if (bookItem == null) throw new Exception("書籍不存在");
 
+			if (Books.SingleOrDefault(x=>x.Book.Id == bookItem.Book.Id)!=null) return;
+
 			var item = Books.SingleOrDefault(x=>x.Id == bookItem.Id);
 
-			if(item == null) Books.Add(item);
+			if(item == null) Books.Add(bookItem);
 
 			else return;
 		}
@@ -67,6 +69,7 @@ namespace WA.BooksPlatform.Models.Entities
 		public void RemoveItem(int bookId)
 		{
 			var item = Books.SingleOrDefault(x=>x.Id == bookId);
+
 			if (item == null) return;
 
 			Books.Remove(item);

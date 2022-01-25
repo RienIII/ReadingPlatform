@@ -19,21 +19,26 @@
     @Model.Blurb
 </div>
 
-<a href="/Books/ChooseChapter?bookId=@Model.Id">選擇章節</a>
-<button class="add2Bookshelf btn btn-primary btn-sm" data-id="@Model.Id">加入書架</button>
+@if (User.Identity.IsAuthenticated)
+{
+    <a href="/Books/ChooseChapter?bookId=@Model.Id" class="btn btn-default">選擇章節</a>
+    <button class="add2Bookshelf btn btn-default btn-sm" data-id="@Model.Id">加入書架</button>
+}
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
         $(document).ready(function () {
-            $("add2Bookshelf").each(function () {
+            $(".add2Bookshelf").each(function () {
                 $(this).on("click", function () {
                     var self = $(this);
                     var bookId = self.attr("data-id");
-                    $.get("/Home/#?bookId" + bookId, null,
+
+                    $.get("/Home/AddItem2Bookshelf?bookId=" + bookId, null,
                         function (result) {
-                            alert("已加入書架!")
+                            alert("成功加入書架!")
                         })
                 })
             })

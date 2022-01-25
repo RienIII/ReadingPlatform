@@ -20,10 +20,13 @@
                 @Html.ActionLink("LOGO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse ">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("分類", "Index", "Home")</li>
-                    <li>@Html.ActionLink("搜尋", "Contact", "Home")</li>
-                </ul>
+                <form action="/Home/CategoryBooks">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("分類", "Category", "Home")</li>
+                        <li><input type="text" name="Search" id="Search" style="margin-top:10px" /></li>
+                        <li><input type="submit"value="搜尋" class="btn-link" style="margin-top:10px"></li>
+                    </ul>
+                </form>
 
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
@@ -54,7 +57,7 @@
                 <ul class="nav navbar-nav nav-justified nav-tabs">
                     <li>@Html.ActionLink("首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("排行", "About", "Home")</li>
-                    <li>@Html.ActionLink("書架", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("書架", "Bookshelf", "Home")</li>
                     <li>@Html.ActionLink("個人資訊", "Index", "Members")</li>
                 </ul>
             </div>

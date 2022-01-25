@@ -14,10 +14,24 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 			return new BookBasicEntity
 			{
 				Id = entity.Id,
+				ImageFileName = entity.ImageFileName,
 				Name = entity.Name,
 				Blurb = entity.Blurb,
 				Author = entity.Author,
-				TotalWord = entity.TotalWord
+				TotalWord = entity.TotalWord,
+				Likes = entity.Likes,
+				Clicks = entity.Clicks,
+				Collections = entity.Collection,
+				ModifiedTime = entity.ModifiedTime
+			};
+		}
+		public static BookshelfItemEntity ToBookshelfItem(this BookEntity entity)
+		{
+			return new BookshelfItemEntity
+			{
+				Id = entity.Id,
+				Book = entity.ToBookBasic(),
+				WatchTime = DateTime.Now,
 			};
 		}
 		public static BookVM ToVM(this BookEntity entity)

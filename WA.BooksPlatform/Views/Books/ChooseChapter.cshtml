@@ -14,7 +14,7 @@
         @foreach (var item in Model.Chapter.Chapter)
         {
             <td>
-                @chapterLink.DisplayChapter(Model.Id, pages, item.Name);
+                @chapterLink.DisplayChapter(Model.Id, pages, item.Name)
             </td>
             pages = pages + 1;
         }

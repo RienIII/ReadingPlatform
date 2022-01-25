@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WA.BooksPlatform.Models.Entities.CategoryEntity>
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>分類</h2>
+
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "CategoryBooks", new {categoryId=item.Id, search=string.Empty, pages=1})
+        </td>
+    </tr>
+}
+
+</table>
