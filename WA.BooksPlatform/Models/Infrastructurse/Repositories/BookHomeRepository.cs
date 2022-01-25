@@ -42,11 +42,12 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 			if(status.HasValue)query.Where(x=>x.Status == status);
 
 			var books = query
+				.Take(3)
 				.OrderByDescending(x=>x.ModifiedTime)
 				.ToList()
 				.Select(x=>x.ToEntity());
 
-			return books.Take(4).ToList();
+			return books.ToList();
 		}
 	}
 }

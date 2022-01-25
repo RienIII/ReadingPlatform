@@ -39,6 +39,8 @@ namespace WA.BooksPlatform.Models.Infrastructurse
 		/// </summary>
 		public int ItemNumPage => 10;
 
+		public int ChapterItemNumPage => 1;
+
 		public void SetPage()
 		{
 			if (this.NowPage < 1) this.NowPage = 1;

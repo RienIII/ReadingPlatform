@@ -1,0 +1,22 @@
+﻿@model WA.BooksPlatform.Models.ViewModels.BookVM
+@using WA.BooksPlatform.Controllers
+@{
+    ViewBag.Title = "ChooseChapter";
+    var chapterLink =(BooksController.ChapterLink)ViewBag.ChapterLink;
+    var pages = 1;
+}
+
+<h2>選擇章節</h2>
+
+<table class="table">
+    <tr>
+
+        @foreach (var item in Model.Chapter.Chapter)
+        {
+            <td>
+                @chapterLink.DisplayChapter(Model.Id, pages, item.Name);
+            </td>
+            pages = pages + 1;
+        }
+    </tr>
+</table>

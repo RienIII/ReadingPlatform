@@ -160,6 +160,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Infrastructurse\Exts\BookChapterEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookChapterExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookExts.cs" />
@@ -200,9 +201,12 @@
     <Compile Include="Models\Services\UseCases\ResetDataCommand.cs" />
     <Compile Include="Models\Services\UseCases\LoginCommand.cs" />
     <Compile Include="Models\Services\UseCases\RegisterCommand.cs" />
+    <Compile Include="Models\ViewModels\BookChapter.cs" />
+    <Compile Include="Models\ViewModels\BookChapterVM.cs" />
     <Compile Include="Models\ViewModels\BookRankVM.cs" />
     <Compile Include="Models\ViewModels\BookshelfVM.cs" />
     <Compile Include="Models\ViewModels\BookHomeVM.cs" />
+    <Compile Include="Models\ViewModels\BookVM.cs" />
     <Compile Include="Models\ViewModels\ForgetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
@@ -258,12 +262,14 @@
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\EditProfile.cshtml" />
     <Content Include="Views\Members\EditPassword.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
+    <Content Include="Views\Books\ChooseChapter.cshtml" />
+    <Content Include="Views\Books\Chapter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\BookImages\" />
     <Folder Include="Files\MemberImages\" />
-    <Folder Include="Views\Books\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
