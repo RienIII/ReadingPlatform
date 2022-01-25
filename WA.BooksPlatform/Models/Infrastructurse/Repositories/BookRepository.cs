@@ -69,7 +69,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 			(
 				Math.Ceiling
 				(
-					Convert.ToDouble(entity.Count() / pages.ItemNumPage)
+					Convert.ToDouble((double)entity.Count()) / pages.ItemNumPage
 				)
 			);
 

@@ -27,6 +27,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		public List<BookBasicEntity> Search(BookRepositoryEntity entity)
 			=> bookRepo
 				.Search(entity)
+				.OrderBy(x=>x.Name)
 				.ToList();
 	}
 }

@@ -41,6 +41,7 @@ namespace WA.BooksPlatform.Models.Entities
 					: this.Blurb;
 			}
 		}
+		public string Category { get; set; }
 		/// <summary>
 		/// 收藏數
 		/// </summary>

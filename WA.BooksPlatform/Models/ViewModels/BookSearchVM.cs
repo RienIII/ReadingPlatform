@@ -26,6 +26,7 @@ namespace WA.BooksPlatform.Models.ViewModels
 		/// 根據分類ID尋找
 		/// </summary>
 		public int? CategoryId { get; set; }
+		public List<CategoryEntity> Category { get; set; }
 
 		/// <summary>
 		/// 分頁

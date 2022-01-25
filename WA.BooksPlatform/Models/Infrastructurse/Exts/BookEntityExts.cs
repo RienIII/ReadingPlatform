@@ -19,6 +19,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				Blurb = entity.Blurb,
 				Author = entity.Author,
 				TotalWord = entity.TotalWord,
+				Category = entity.Category.Name,
 				Likes = entity.Likes,
 				Clicks = entity.Clicks,
 				Collections = entity.Collection,

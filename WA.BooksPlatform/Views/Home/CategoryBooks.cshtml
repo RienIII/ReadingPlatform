@@ -1,10 +1,21 @@
 ﻿@model WA.BooksPlatform.Models.ViewModels.BookSearchVM
-
+@using WA.BooksPlatform.Controllers
 @{
     ViewBag.Title = "CategoryBooks";
+    var categoryLink = (HomeController.CategoryLink)ViewBag.CategoryLink;
 }
 
 <h2>尋找書籍</h2>
+<table class="table">
+    <tr><td>搜尋內容：@Model.Search</td></tr>
+    <tr>
+        @foreach (var item in Model.Category)
+        {
+            <td>@categoryLink.Category(item.Id, item.Name, Model.Search, 1)</td>
+        }
+        <td><a href="/Home/CategoryBooks?categoryId=&search=&pages=1" class="btn btn-default">清除搜尋結果</a></td>
+    </tr>
+</table>
 
 @if (!Model.Books.Count.Equals(0))
 {
@@ -13,14 +24,14 @@
         {
             <a href="/Books/Index?bookId=@item.Id">
                 <div class="row col-md-12">
-                    <div class="col-md-9">
+                    <div class="col-md-3">
                         <img src="~/Files/BookImages/" style="width: 100%; height: 100%" />
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-9">
                         <h4>@item.Name</h4>
-                        @item.Author&emsp;@item.TotalWord
+                        作者：@item.Author&emsp;總字數：@item.TotalWord&emsp;分類：@item.Category
                         <br />
-                        @item.BirefBlurb
+                        簡介：@item.BirefBlurb
                     </div>
                 </div>
             </a>

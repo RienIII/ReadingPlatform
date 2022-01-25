@@ -52,7 +52,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 			(
 				Math.Ceiling
 				(
-					Convert.ToDouble(bookshelf.Books.Count() / pages.ItemNumPage)
+					Convert.ToDouble(bookshelf.Books.Count()) / pages.ItemNumPage
 				)
 			);
 

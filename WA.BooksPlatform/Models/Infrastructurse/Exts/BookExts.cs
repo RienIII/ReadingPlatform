@@ -19,6 +19,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				Author = book.Author.Name,
 				TotalWord = book.TotalWord,
 				Blurb = book.Blurb,
+				Category = book.Category.Name,
 				Collections = book.Collections,
 				Likes = book.Likes,
 				Clicks = book.Clicks,
@@ -38,7 +39,13 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				book.Blurb, 
 				items, 
 				book.Status
-			);
+			)
+			{ 
+				Category = book.Category.ToEntity(),
+				Clicks = book.Clicks, 
+				Collection = book.Collections, 
+				Likes = book.Likes
+			};
 		}
 	}
 }

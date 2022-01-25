@@ -33,6 +33,7 @@ namespace WA.BooksPlatform.Controllers
 			this.memberRepo = new MemberRepository(db);
 			this.bookshelfRepo = new BookshelfRepository(db);
 		}
+
 		/// <summary>
 		/// 首頁
 		/// </summary>
@@ -59,6 +60,7 @@ namespace WA.BooksPlatform.Controllers
 		}
 		public ActionResult CategoryBooks(int? categoryId, string search, int pages = 1)
 		{
+			var template = new CategoryLink("<a href=\"/Home/CategoryBooks?categoryId={0}&search={1}&pages={2}\" class=\"btn btn-default\">{3}</a>");
 			BookSearchVM model = new BookSearchVM()
 			{
 				CategoryId = categoryId,
@@ -76,6 +78,9 @@ namespace WA.BooksPlatform.Controllers
 
 			bookService = new BookService(bookSearchRepo, bookHomeRepo);
 			model.Books = bookService.Current(entity);
+			model.Category = categoryRepo.Search(null);
+
+			ViewBag.CategoryLink = template;
 
 			return View(model);
 		}
@@ -109,26 +114,51 @@ namespace WA.BooksPlatform.Controllers
 
 			return new EmptyResult();
 		}
-		public ActionResult Rank(int rankId = 1)
+		public ActionResult Rank(string sort)
 		{
+			BookRankVM model = new BookRankVM();
 			BookRepositoryEntity entity = new BookRepositoryEntity
 			{
 				Status = true,
 				TakeCount = 10
 			};
-			var books = bookRankRepo.Search(entity);
+			model.Books = bookRankRepo.Search(entity);
 
-			switch (rankId)
+			switch (sort)
 			{
-				case 1:
-					books = books.OrderBy(x => x.Collections).ToList();
+				case "收藏":
+					model.Books = model.Books.OrderBy(x => x.Collections).ToList();
 					break;
-				case 2:
-					books = books.OrderBy(x => x.Likes).ToList();
+				case "按讚":
+					model.Books = model.Books.OrderBy(x => x.Likes).ToList();
+					break;
+				case "點擊":
+					model.Books = model.Books.OrderBy(x => x.Clicks).ToList();
 					break;
 			}
 
-			return View();
+			return View(model);
+		}
+		public class CategoryLink
+		{
+			private string Template;
+			public CategoryLink(string template)
+			{
+				this.Template = template;
+			}
+
+			/// <summary>
+			/// 生成HTML
+			/// </summary>
+			/// <param name="categoryId">分類ID</param>
+			/// <param name="categoryName">分類名稱</param>
+			/// <param name="search">搜尋內容</param>
+			/// <param name="pages">當下分頁頁數</param>
+			/// <returns></returns>
+			public MvcHtmlString Category(int?categoryId, string categoryName, string search, int pages = 1)
+			{
+				return new MvcHtmlString(string.Format(Template, categoryId, search, pages, categoryName));
+			}
 		}
 	}
 }

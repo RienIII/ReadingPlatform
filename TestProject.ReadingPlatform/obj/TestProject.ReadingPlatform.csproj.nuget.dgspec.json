@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj": {}
+    "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj": {}
   },
   "projects": {
-    "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj": {
+    "D:\\C#專案\\ReadingPlatform\\DataValidator\\DataValidator.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj",
+        "projectUniqueName": "D:\\C#專案\\ReadingPlatform\\DataValidator\\DataValidator.csproj",
         "projectName": "DataValidator",
-        "projectPath": "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj",
+        "projectPath": "D:\\C#專案\\ReadingPlatform\\DataValidator\\DataValidator.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
@@ -19,11 +19,11 @@
         "net48": {}
       }
     },
-    "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj": {
+    "D:\\C#專案\\ReadingPlatform\\EmailHelper\\EmailHelper.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj",
+        "projectUniqueName": "D:\\C#專案\\ReadingPlatform\\EmailHelper\\EmailHelper.csproj",
         "projectName": "EmailHelper",
-        "projectPath": "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj",
+        "projectPath": "D:\\C#專案\\ReadingPlatform\\EmailHelper\\EmailHelper.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
@@ -34,11 +34,11 @@
         "net48": {}
       }
     },
-    "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj": {
+    "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj",
+        "projectUniqueName": "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj",
         "projectName": "HashUtility",
-        "projectPath": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj",
+        "projectPath": "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
@@ -49,14 +49,14 @@
         "net48": {}
       }
     },
-    "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj": {
+    "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
+        "projectUniqueName": "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
         "projectName": "TestProject.ReadingPlatform",
-        "projectPath": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
+        "projectPath": "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\obj\\",
+        "outputPath": "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -73,11 +73,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj": {
-                "projectPath": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj"
+              "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj": {
+                "projectPath": "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj"
               },
-              "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
-                "projectPath": "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj"
+              "D:\\C#專案\\ReadingPlatform\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
+                "projectPath": "D:\\C#專案\\ReadingPlatform\\WA.BooksPlatform\\WA.BooksPlatform.csproj"
               }
             }
           }
@@ -132,22 +132,22 @@
         }
       }
     },
-    "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
+    "D:\\C#專案\\ReadingPlatform\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj",
+        "projectUniqueName": "D:\\C#專案\\ReadingPlatform\\WA.BooksPlatform\\WA.BooksPlatform.csproj",
         "projectName": "WA.BooksPlatform",
-        "projectPath": "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj",
+        "projectPath": "D:\\C#專案\\ReadingPlatform\\WA.BooksPlatform\\WA.BooksPlatform.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {
-              "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj": {
-                "projectPath": "D:\\專題\\BooksPlatform.Solution\\DataValidator\\DataValidator.csproj"
+              "D:\\C#專案\\ReadingPlatform\\DataValidator\\DataValidator.csproj": {
+                "projectPath": "D:\\C#專案\\ReadingPlatform\\DataValidator\\DataValidator.csproj"
               },
-              "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj": {
-                "projectPath": "D:\\專題\\BooksPlatform.Solution\\EmailHelper\\EmailHelper.csproj"
+              "D:\\C#專案\\ReadingPlatform\\EmailHelper\\EmailHelper.csproj": {
+                "projectPath": "D:\\C#專案\\ReadingPlatform\\EmailHelper\\EmailHelper.csproj"
               },
-              "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj": {
-                "projectPath": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj"
+              "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj": {
+                "projectPath": "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj"
               }
             }
           }

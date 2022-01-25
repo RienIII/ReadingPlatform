@@ -271,6 +271,7 @@
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\CategoryBooks.cshtml" />
     <Content Include="Views\Home\Bookshelf.cshtml" />
+    <Content Include="Views\Home\Rank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

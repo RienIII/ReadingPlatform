@@ -60,7 +60,7 @@
 				add /Models/ViewMOdels/ForgetPasswordVM.cs
 				add /Models/Services/UseCases/LoginCommand.cs
 				add Action ForgetPassword
-				會員中心 : 修改個人資料、修改密碼 <=====
+				會員中心 : 修改個人資料、修改密碼 
 				add Action EditProfile
 				add Action RestPassword
 				add /Models/ViewModels/EditProfileVM.cs
@@ -82,5 +82,5 @@
 				add private Action LordBook 找到書籍給 Index ChooseChapter Chapter 用
 				modify BookEntityExts.cs
 	
-[working on] modify HomeController...
+[working on] modify HomeController... <=====
 	
