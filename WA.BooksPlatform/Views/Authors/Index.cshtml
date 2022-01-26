@@ -1,10 +1,14 @@
-﻿@model WA.BooksPlatform.Models.ViewModels.BookshelfVM
+﻿@model WA.BooksPlatform.Models.ViewModels.ManageAuthorBooksVM
 
 @{
-    ViewBag.Title = "Bookshelf";
+    ViewBag.Title = "Index";
 }
 
-<h2>書架</h2>
+<h2>管理作品</h2>
+
+<p>
+    @Html.ActionLink("Create New", "BookCreate", "Authors")
+</p>
 
 @if (!Model.Books.Count.Equals(0))
 {
@@ -13,26 +17,25 @@
             @foreach (var item in Model.Books)
             {
                 <tr>
-
                     <th>
                         <a href="/Books/Index?bookId=@item.Id">
                             <img src="~/Files/BookImages/專題用書本.jpg" style="width:30% ; height:100px ; object-fit:cover;">
                         </a>
                     </th>
                     <td>
-                        <a href="/Books/Index?bookId=@item.Id">@item.Book.Name</a>
+                        <a href="/Books/Index?bookId=@item.Id">@item.Name</a>
                     </td>
                     <td>
-                        作者：@Html.DisplayFor(modelItem => item.Book.Author)
+                        作者：@Html.DisplayFor(modelItem => item.Author)
                         <br />
                         總字數：@Html.DisplayFor(modelItem => item.TotalWord)
                     </td>
                     <td>
                         簡介：<br />
-                        @Html.DisplayFor(modelItem => item.Book.BirefBlurb)
+                        @Html.DisplayFor(modelItem => item.BirefBlurb)
                     </td>
                     <td>
-                        <button class="btn btn-danger delectItem" data-id="@item.Id">刪除</button>
+                        <button class="btn btn-primary EditItem" data-id="@item.Id">編輯</button>
                     </td>
                 </tr>
             }
@@ -51,8 +54,8 @@ else
         <li>
             @if (Model.ForPages.NowPage > 1)
             {
-                @Html.ActionLink("<< ", "Bookshelf", new { pages = 1 })
-                @Html.ActionLink("<", "Bookshelf", new { pages = Model.ForPages.NowPage - 1 })
+                @Html.ActionLink("<< ", "Index", new { pages = 1 })
+                @Html.ActionLink("<", "Index", new { pages = Model.ForPages.NowPage - 1 })
             }
         </li>
         @for (var intPage = (Model.ForPages.NowPage - 6); intPage < (Model.ForPages.NowPage + 6); intPage++)
@@ -62,13 +65,13 @@ else
                 if (intPage == Model.ForPages.NowPage)
                 {
                     <li class="active">
-                        @Html.ActionLink(intPage.ToString(), "Bookshelf", new { pages = intPage })
+                        @Html.ActionLink(intPage.ToString(), "Index", new { pages = intPage })
                     </li>
                 }
                 else
                 {
                     <li>
-                        @Html.ActionLink(intPage.ToString(), "Bookshelf", new { pages = intPage })
+                        @Html.ActionLink(intPage.ToString(), "Index", new { pages = intPage })
                     </li>
                 }
             }
@@ -76,30 +79,9 @@ else
         <li>
             @if (Model.ForPages.NowPage < Model.ForPages.MaxPage)
             {
-                @Html.ActionLink(">", "Bookshelf", new { pages = Model.ForPages.NowPage + 1 })
-                @Html.ActionLink(" >>", "Bookshelf", new { pages = Model.ForPages.MaxPage })
+                @Html.ActionLink(">", "Index", new { pages = Model.ForPages.NowPage + 1 })
+                @Html.ActionLink(" >>", "Index", new { pages = Model.ForPages.MaxPage })
             }
         </li>
     </ul>
 </nav>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script>
-        $(document).ready(function () {
-            $(".delectItem").each(function () {
-                $(this).on("click", function () {
-                    var del = $(this);
-                    var bookId = del.attr("data-id");
-
-                    $.get("/Home/DelectItem2Bookshelf?bookId=" + bookId, null,
-                        function () {
-                            location.reload();
-                        })
-                })
-            })
-
-        })
-    </script>
-}

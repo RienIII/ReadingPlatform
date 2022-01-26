@@ -24,7 +24,7 @@ namespace WA.BooksPlatform.Models.Entities
 			new DataValid<string>(blurb, "簡介").StringRequired().StringLengthGreaterOrEqualThan(3);
 
 			this.Name = name;
-			this.Author = author;
+			this.AuthorName = author;
 			this.Blurb = blurb;
 			this.Status = true;
 		}
@@ -67,7 +67,9 @@ namespace WA.BooksPlatform.Models.Entities
 		/// <summary>
 		/// 作者
 		/// </summary>
-		public string Author { get; set; }
+		public string AuthorName { get; set; }
+
+		public AuthorEntity Author { get; set; }
 
 		/// <summary>
 		/// 簡介

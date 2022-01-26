@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WA.BooksPlatform.Models.EFModels;
 using WA.BooksPlatform.Models.Entities;
 using WA.BooksPlatform.Models.ViewModels;
 
@@ -17,7 +18,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				ImageFileName = entity.ImageFileName,
 				Name = entity.Name,
 				Blurb = entity.Blurb,
-				Author = entity.Author,
+				Author = entity.AuthorName,
 				TotalWord = entity.TotalWord,
 				Category = entity.Category.Name,
 				Likes = entity.Likes,
@@ -46,7 +47,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				Id = entity.Id,
 				Name=entity.Name,
 				Blurb = entity.Blurb,
-				Author=entity.Author,
+				Author=entity.AuthorName,
 				ImageFileName = entity.ImageFileName,
 				Category = entity.Category,
 				Status = entity.Status,
@@ -54,6 +55,22 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				Likes = entity.Likes,
 				Clicks = entity.Clicks,
 				Collection = entity.Collection
+			};
+		}
+		public static Book ToEF(this BookEntity entity)
+		{
+			return new Book
+			{
+				Name = entity.Name,
+				Blurb = entity.Blurb,
+				AuthorId = entity.Author.Id,
+				Clicks = entity.Clicks,
+				Likes = entity.Likes,
+				Collections = entity.Collection,
+				ImageFileName = entity.ImageFileName,
+				Status = entity.Status,
+				TotalWord = entity.TotalWord,
+				CategoryId = entity.Category.Id
 			};
 		}
 	}

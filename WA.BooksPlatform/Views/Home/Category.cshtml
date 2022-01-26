@@ -3,15 +3,20 @@
 @{
     ViewBag.Title = "Category";
 }
+<style>
+    #item {
+        font-size: 25px;
+    }
+</style>
 
 <h2>分類</h2>
 
-<table class="table">
+<table class="table table-hover">
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.ActionLink(item.Name, "CategoryBooks", new {categoryId=item.Id, search=string.Empty, pages=1})
+        <td id="item">
+            @Html.ActionLink(item.Name, "CategoryBooks", new {categoryId=item.Id, search=string.Empty, pages=1}, new { @class = "btn btn-default" })
         </td>
     </tr>
 }

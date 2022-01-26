@@ -6,15 +6,14 @@
     var pages = 1;
 }
 
-<h2>選擇章節</h2>
+<h2><p class="text-center">@Model.Name</p></h2>
 
 <table class="table">
     <tr>
-
         @foreach (var item in Model.Chapter.Chapter)
         {
-            <td>
-                @chapterLink.DisplayChapter(Model.Id, pages, item.Name)
+            <td style="font-size:24px">
+                <p class="text-center">@chapterLink.DisplayChapter(Model.Id, pages, item.Name)</p>
             </td>
             pages = pages + 1;
         }

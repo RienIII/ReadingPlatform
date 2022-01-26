@@ -25,6 +25,10 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		{
 			return db.Books.AsNoTracking().SingleOrDefault(x => x.Id == bookId) != null;
 		}
+		public bool IsExist(string bookName)
+		{
+			return db.Books.AsNoTracking().SingleOrDefault(x=>x.Name == bookName) != null;
+		}
 
 		public BookEntity Lord(int bookId, bool? status)
 		{
@@ -42,6 +46,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		{
 			IQueryable<Book> query = db.Books.AsNoTracking();
 
+			if(entity.AuthorId.HasValue) query = query.Where(x=>x.AuthorId == entity.AuthorId.Value);
 			if (entity.CategoryId.HasValue) query = query.Where(x => x.CategoryId == entity.CategoryId);
 			if (!string.IsNullOrEmpty(entity.BookName))query = query.Where(x => x.Name.Contains(entity.BookName));
 			if (entity.Status.HasValue) query = query.Where(x => x.Status == entity.Status);
@@ -57,6 +62,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 
 			return ForPages(entity.ForPages, booksPages);
 		}
+
 		/// <summary>
 		/// 分頁用，全部寫在Search感覺好長
 		/// </summary>

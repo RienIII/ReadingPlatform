@@ -42,7 +42,7 @@ namespace WA.BooksPlatform.Controllers
         /// <returns></returns>
         public ActionResult ChooseChapter(int bookId)
         {
-            var template = new ChapterLink("<a href=\"/Books/Chapter?bookId={0}&pages={1}\">{2}</a>");
+            var template = new ChapterLink("<a href=\"/Books/Chapter?bookId={0}&pages={1}\" class=\"btn btn-default\">{2}</a>");
             ViewBag.ChapterLink = template;
 
             return View(LordBook(bookId));

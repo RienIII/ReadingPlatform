@@ -17,6 +17,13 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 		bool IsExist(int bookId);
 
 		/// <summary>
+		/// 查看所搜尋的書存在與否
+		/// </summary>
+		/// <param name="bookName">需要搜尋的書籍Name</param>
+		/// <returns></returns>
+		bool IsExist(string bookName);
+
+		/// <summary>
 		/// 載入一筆資料，但是已經進入書籍頁
 		/// </summary>
 		/// <param name="bookId"></param>

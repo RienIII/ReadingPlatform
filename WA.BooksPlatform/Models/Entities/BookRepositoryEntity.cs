@@ -12,6 +12,10 @@ namespace WA.BooksPlatform.Models.Entities
 	public class BookRepositoryEntity
 	{
 		/// <summary>
+		/// 用作者ID尋找對應的書籍
+		/// </summary>
+		public int? AuthorId { get; set; }
+		/// <summary>
 		/// 分類ID
 		/// </summary>
 		public int? CategoryId { get; set; }

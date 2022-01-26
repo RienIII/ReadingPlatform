@@ -23,6 +23,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 			this.db = dataBase;
 		}
 		public bool IsExist(int bookId) => bookRepo.IsExist(bookId);
+		public bool IsExist(string bookName) => bookRepo.IsExist(bookName);
 		public BookEntity Lord(int bookId, bool? status) => bookRepo.Lord(bookId, status);
 		public List<BookBasicEntity> Search(BookRepositoryEntity entity)
 			=> bookRepo

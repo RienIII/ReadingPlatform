@@ -128,11 +128,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Models\DTOs\BecomeAuthorRequest.cs" />
     <Compile Include="Models\DTOs\BecomeAuthorResponse.cs" />
+    <Compile Include="Models\DTOs\CreateBookRequest.cs" />
+    <Compile Include="Models\DTOs\CreateBookResponse.cs" />
     <Compile Include="Models\EFModels\AppDbContext.cs" />
     <Compile Include="Models\EFModels\Author.cs" />
     <Compile Include="Models\EFModels\Book.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Infrastructurse\Exts\AuthorEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\AuthorExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\AuthorVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookChapterEntityExts.cs" />
@@ -173,8 +177,10 @@
     <Compile Include="Models\Infrastructurse\Exts\BookshelfItemEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookshelfItemExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\CategoryExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\CreateBookRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ForgetPasswordResetVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\LoginVMExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\ManageAuthorBookCreateVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\MemberEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\MemberExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterRequestExts.cs" />
@@ -183,6 +189,7 @@
     <Compile Include="Models\Infrastructurse\Exts\ResetProfileRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ResetProfileVMExts.cs" />
     <Compile Include="Models\Infrastructurse\ForPages.cs" />
+    <Compile Include="Models\Infrastructurse\Repositories\AuthorRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\BookHomeRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\BookRankRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\BookRepository.cs" />
@@ -190,8 +197,10 @@
     <Compile Include="Models\Infrastructurse\Repositories\BookshelfRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\MemberRepository.cs" />
+    <Compile Include="Models\Services\Core\AuthorService.cs" />
     <Compile Include="Models\Services\Core\BookService.cs" />
     <Compile Include="Models\Services\Core\BookshelfService.cs" />
+    <Compile Include="Models\Services\Core\Interfaces\IAuthorRepository.cs" />
     <Compile Include="Models\Services\Core\Interfaces\IBookHomeRepository.cs" />
     <Compile Include="Models\Services\Core\Interfaces\IBookNoSearchRepository.cs" />
     <Compile Include="Models\Services\Core\Interfaces\IBookRankRepository.cs" />
@@ -204,6 +213,7 @@
     <Compile Include="Models\DTOs\RegisterResponse.cs" />
     <Compile Include="Models\Services\Core\MemberService.cs" />
     <Compile Include="Models\Services\UseCases\BookshelfCommand.cs" />
+    <Compile Include="Models\Services\UseCases\CreateBookCommand.cs" />
     <Compile Include="Models\Services\UseCases\ForgetPasswordCommand.cs" />
     <Compile Include="Models\Services\UseCases\ResetDataCommand.cs" />
     <Compile Include="Models\Services\UseCases\LoginCommand.cs" />
@@ -218,6 +228,8 @@
     <Compile Include="Models\ViewModels\ForgetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\AuthorVM.cs" />
     <Compile Include="Models\ViewModels\LoginVM.cs" />
+    <Compile Include="Models\ViewModels\ManageAuthorBookCreateVM.cs" />
+    <Compile Include="Models\ViewModels\ManageAuthorBooksVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\ResetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\ResetProfileVM.cs" />
@@ -257,7 +269,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Members\ActiveRegister.cshtml" />
     <Content Include="Views\Members\Register.cshtml" />
@@ -278,6 +289,8 @@
     <Content Include="Views\Home\Bookshelf.cshtml" />
     <Content Include="Views\Home\Rank.cshtml" />
     <Content Include="Views\Members\BecomeAuthor.cshtml" />
+    <Content Include="Views\Authors\Index.cshtml" />
+    <Content Include="Views\Authors\BookCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

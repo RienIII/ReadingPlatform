@@ -4566,11 +4566,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
+      "projectUniqueName": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
       "projectName": "TestProject.ReadingPlatform",
-      "projectPath": "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
+      "projectPath": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\TestProject.ReadingPlatform.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\C#專案\\ReadingPlatform\\TestProject.ReadingPlatform\\obj\\",
+      "outputPath": "D:\\專題\\BooksPlatform.Solution\\TestProject.ReadingPlatform\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4587,11 +4587,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj": {
-              "projectPath": "D:\\C#專案\\ReadingPlatform\\HashUtility\\HashUtility.csproj"
+            "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj": {
+              "projectPath": "D:\\專題\\BooksPlatform.Solution\\HashUtility\\HashUtility.csproj"
             },
-            "D:\\C#專案\\ReadingPlatform\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
-              "projectPath": "D:\\C#專案\\ReadingPlatform\\WA.BooksPlatform\\WA.BooksPlatform.csproj"
+            "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj": {
+              "projectPath": "D:\\專題\\BooksPlatform.Solution\\WA.BooksPlatform\\WA.BooksPlatform.csproj"
             }
           }
         }

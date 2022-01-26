@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WA.BooksPlatform.Models.DTOs;
 using WA.BooksPlatform.Models.Entities;
 using WA.BooksPlatform.Models.Infrastructurse.Repositories;
 using WA.BooksPlatform.Models.Services.Core.Interfaces;
@@ -21,6 +22,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 			this.bookRepository = bookRepo;
 			this.bookNoSearchRepository = bookNoSearchRepo;
 		}
+
 		/// <summary>
 		/// 點進書籍時，會呈現該書籍
 		/// </summary>
@@ -42,6 +44,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 		{
 			return bookRepository.Search(entity);
 		}
+
 		/// <summary>
 		/// 最近更新
 		/// </summary>
@@ -49,6 +52,15 @@ namespace WA.BooksPlatform.Models.Services.Core
 		public List<BookBasicEntity> CurrentLatestUpdate()
 		{
 			return bookNoSearchRepository.GetLatestUpdate(true);
+		}
+
+		public CreateBookResponse BookCreate(CreateBookRequest request)
+		{
+			if(bookRepository.IsExist(request.Name)) return CreateBookResponse.Fail("您所創建的書名已被使用!");
+
+
+
+			return CreateBookResponse.Success();
 		}
 	}
 }

@@ -9,22 +9,32 @@
 @if (!Model.Books.Count.Equals(0))
 {
     <div class="row">
-        @foreach (var item in Model.Books)
-        {
-            <a href="/Books/Index?bookId=@item.Id">
-                <div class="row col-md-12">
-                    <div class="col-md-3">
-                        <img src="~/Files/BookImages/" style="width: 100%; height: 100%" />
-                    </div>
-                    <div class="col-md-9">
-                        <h4>@item.Name</h4>
-                        @item.Author&emsp;@item.TotalWord
+        <table class="table table-hover">
+            @foreach (var item in Model.Books)
+            {
+                <tr>
+                    <th>
+                        <a href="/Books/Index?bookId=@item.Id">
+                            <img src="~/Files/BookImages/專題用書本.jpg" style="width:30% ; height:100px ; object-fit:cover;">
+                        </a>
+                    </th>
+                    <td>
+                        <a href="/Books/Index?bookId=@item.Id" >@item.Name</a>
+                    </td>
+                    <td>
+                        作者：@Html.DisplayFor(modelItem => item.Author)
                         <br />
-                        @item.BirefBlurb
-                    </div>
-                </div>
-            </a>
-        }
+                        總字數：@Html.DisplayFor(modelItem => item.TotalWord)
+                    </td>
+                    <td>
+                        簡介：<br />
+                        @Html.DisplayFor(modelItem => item.Blurb)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </table>
     </div>
 }
 else
@@ -33,5 +43,4 @@ else
         <td>查無資料</td>
     </tr>
 }
-<br />
 
