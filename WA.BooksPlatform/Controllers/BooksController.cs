@@ -71,7 +71,7 @@ namespace WA.BooksPlatform.Controllers
 
             return book;
         }
-        private List<BookChapter> ChapterPages(BookChapterVM model, ForPages pages)
+        private List<BookChapterItemVM> ChapterPages(BookChapterVM model, ForPages pages)
 		{
             pages.MaxPage =
                 Convert.ToInt32(

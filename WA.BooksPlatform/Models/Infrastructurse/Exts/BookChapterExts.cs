@@ -15,7 +15,8 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 			{
 				Id = chapter.Id,
 				Name = chapter.Name,
-				Artical = chapter.Artical
+				Artical = chapter.Artical,
+				CreateTime = chapter.CreateTime
 			};
 		}
 	}

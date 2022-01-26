@@ -21,11 +21,13 @@ namespace WA.BooksPlatform.Controllers
         AppDbContext db = new AppDbContext();
         private IBookRepository bookRepo;
         private IMemberRepository memberRepo;
+        private ICategoryRepository categoryRepo;
         private AuthorService authorService;
 		public AuthorsController()
 		{
             bookRepo = new BookRepository(db);
             memberRepo = new MemberRepository(db);
+            categoryRepo = new CategoryRepository(db);
             authorService = new AuthorService(bookRepo, memberRepo);
 		}
 
@@ -49,6 +51,8 @@ namespace WA.BooksPlatform.Controllers
 
         public ActionResult BookCreate()
 		{
+            ViewBag.Category = categoryRepo.Search(null);
+
             return View();
 		}
         [HttpPost]
@@ -64,7 +68,41 @@ namespace WA.BooksPlatform.Controllers
 			}
 
             ModelState.AddModelError(string.Empty, response.ErrorMessage);
+            ViewBag.Category = categoryRepo.Search(null);
             return View(model);
         }
-    }
+
+        public ActionResult CurrentBookChapter(int bookId)
+		{
+            string author = memberRepo.Lord(User.Identity.Name).Author.Name;
+
+            var book = bookRepo.Lord(bookId, true).ToVM();
+            if(book.Author == author)
+			{
+                return View(book);
+			}
+            book = null;
+            return View(book);
+		}
+
+        public ActionResult BookChapterCreate(int bookId)
+		{
+            return View();
+		}
+		[HttpPost]
+		public ActionResult BookChapterCreate(int bookId, BookChapterItemVM model)
+		{
+            if (!ModelState.IsValid) return View(model);
+
+            CreateBookResponse response = authorService.BookChapterCreate(model.ToRequest(), bookId);
+
+			if (response.IsSuccess)
+			{
+                return RedirectToAction("CurrentBookChapter", "Authors");
+			}
+
+            ModelState.AddModelError(string.Empty, response.ErrorMessage);
+			return View(model);
+		}
+	}
 }

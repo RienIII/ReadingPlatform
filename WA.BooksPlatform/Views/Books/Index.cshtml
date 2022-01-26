@@ -4,27 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@*<div class="row col-md-12">
-    <div class="col-md-4">
-        <img src="~/Files/@Model.ImageFileName" style="width: 100%; height: 100%" />
-    </div>
-    <div class="col-md-8">
-        <h4>@Model.Name</h4>
-        <br />
-        作者：@Model.Author &emsp;總字數：@Model.TotalWord
-        <br />
-    </div>
-</div>
-<div class="row col-md-12">
-    @Model.Blurb
-</div>
-
-@if (User.Identity.IsAuthenticated)
-{
-    <a href="/Books/ChooseChapter?bookId=@Model.Id" class="btn btn-default">選擇章節</a>
-    <button class="add2Bookshelf btn btn-default btn-sm" data-id="@Model.Id">加入書架</button>
-}*@
-
 <div class="row" style="display: flex;">
     <div class="col-md-3">
         <img src="~/Files/BookImages/專題用書本.jpg" style="width:40% ; height:100% ; ">

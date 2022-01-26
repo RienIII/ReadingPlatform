@@ -134,6 +134,7 @@
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Models\DTOs\BecomeAuthorRequest.cs" />
     <Compile Include="Models\DTOs\BecomeAuthorResponse.cs" />
+    <Compile Include="Models\DTOs\BookChapterCreateRequest.cs" />
     <Compile Include="Models\DTOs\CreateBookRequest.cs" />
     <Compile Include="Models\DTOs\CreateBookResponse.cs" />
     <Compile Include="Models\EFModels\AppDbContext.cs" />
@@ -168,8 +169,10 @@
     <Compile Include="Models\Infrastructurse\Exts\AuthorEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\AuthorExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\AuthorVMExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\BookChapterCreateRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookChapterEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookChapterExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\BookChapterItemVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\BookshelfEntityExts.cs" />
@@ -218,7 +221,7 @@
     <Compile Include="Models\Services\UseCases\ResetDataCommand.cs" />
     <Compile Include="Models\Services\UseCases\LoginCommand.cs" />
     <Compile Include="Models\Services\UseCases\RegisterCommand.cs" />
-    <Compile Include="Models\ViewModels\BookChapter.cs" />
+    <Compile Include="Models\ViewModels\BookChapterItemVM.cs" />
     <Compile Include="Models\ViewModels\BookChapterVM.cs" />
     <Compile Include="Models\ViewModels\BookRankVM.cs" />
     <Compile Include="Models\ViewModels\BookshelfVM.cs" />
@@ -291,6 +294,8 @@
     <Content Include="Views\Members\BecomeAuthor.cshtml" />
     <Content Include="Views\Authors\Index.cshtml" />
     <Content Include="Views\Authors\BookCreate.cshtml" />
+    <Content Include="Views\Authors\CurrentBookChapter.cshtml" />
+    <Content Include="Views\Authors\BookChapterCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

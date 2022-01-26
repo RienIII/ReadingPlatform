@@ -12,5 +12,7 @@ namespace WA.BooksPlatform.Models.DTOs
 		public string Blurb { get; set; }
 
 		public string ImageFilaName { get; set; }
+
+		public int CategoryId { get; set; }
 	}
 }

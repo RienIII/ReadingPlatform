@@ -31,5 +31,21 @@ namespace WA.BooksPlatform.Models.Services.Core
 
 			return CreateBookResponse.Success();
 		}
+
+		public CreateBookResponse BookChapterCreate(BookChapterCreateRequest request, int bookId)
+		{
+			var book = bookRepo.Lord(bookId, true);
+
+			if (book == null) return CreateBookResponse.Fail("書籍不存在");
+
+			if (book.GetItems().SingleOrDefault(x => x.Name == request.Name) != null)
+			{
+				return CreateBookResponse.Fail("章節名稱已存在");
+			}
+
+			authorRepo.BookChapterCreate(bookId, request.ToEntity());
+
+			return CreateBookResponse.Success();
+		}
 	}
 }

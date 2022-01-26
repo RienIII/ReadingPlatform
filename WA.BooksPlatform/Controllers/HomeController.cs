@@ -60,7 +60,7 @@ namespace WA.BooksPlatform.Controllers
 		}
 		public ActionResult CategoryBooks(int? categoryId, string search, int pages = 1)
 		{
-			var template = new CategoryLink("<a href=\"/Home/CategoryBooks?categoryId={0}&search={1}&pages={2}\" class=\"btn btn-default\">{3}</a>");
+			var template = new CategoryLink("<a href=\"/Home/CategoryBooks?categoryId={0}&search={1}&pages={2}\" class=\"btn btn-default active\">{3}</a>");
 			BookSearchVM model = new BookSearchVM()
 			{
 				CategoryId = categoryId,

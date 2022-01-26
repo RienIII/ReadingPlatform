@@ -18,7 +18,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				Likes = 0,
 				Collection = 0,
 				Author = author,
-				Category = new CategoryEntity { Id = 1 }
+				CategoryId = request.CategoryId
 			};
 		}
 	}

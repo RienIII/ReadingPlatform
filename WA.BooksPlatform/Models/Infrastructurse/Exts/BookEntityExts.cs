@@ -70,7 +70,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				ImageFileName = entity.ImageFileName,
 				Status = entity.Status,
 				TotalWord = entity.TotalWord,
-				CategoryId = entity.Category.Id
+				CategoryId = entity.CategoryId
 			};
 		}
 	}

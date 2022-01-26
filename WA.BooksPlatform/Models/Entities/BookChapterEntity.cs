@@ -41,6 +41,8 @@ namespace WA.BooksPlatform.Models.Entities
 			}
 		}
 		public int WordCount => string.IsNullOrEmpty(Artical) ? 0 : Artical.Length;
-		
+
+		public DateTime? CreateTime { get; set; }
+
 	}
 }

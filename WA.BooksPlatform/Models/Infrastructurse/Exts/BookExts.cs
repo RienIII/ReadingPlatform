@@ -42,6 +42,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 			)
 			{ 
 				Category = book.Category.ToEntity(),
+				CategoryId = book.CategoryId,
 				Clicks = book.Clicks, 
 				Collection = book.Collections, 
 				Likes = book.Likes

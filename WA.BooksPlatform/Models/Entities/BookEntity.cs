@@ -76,7 +76,8 @@ namespace WA.BooksPlatform.Models.Entities
 		/// </summary>
 		public string Blurb { get; set; }
 
-		
+		public int? CategoryId { get; set; }
+
 		private CategoryEntity _Category;
 		/// <summary>
 		/// 書籍分類

@@ -90,9 +90,9 @@
 				Service : add Method BecomeAuthor
 				IRepo : add Method IsAuthorExist, BecomeAuthor
 
-[working on] /Views 礶э...
-	modify /Views/Books 场
-	modify /Views/Home 场
+[V] /Views 礶э...
+				modify /Views/Books 场
+				modify /Views/Home 场
 
 [working on] add AuthorsController...
 	add /Models/DTOs/CreateBookRequest.cs
@@ -100,7 +100,7 @@
 	add /Models/Infrastructures/Exts/AuthorEntityExts.cs
 	add /Models/Infrastructures/Exts/CreateBookRequestExts.cs
 	add /Models/Infrastructures/Exts/ManageAuthorBookCreateVMExts.cs
-	add AuthorService	<=====
+	add AuthorService	
 	add IAuthorRepository
 	add AuthorRepository
 	add /Models/ViewModels/ManageAuthorBookCreateVM.cs

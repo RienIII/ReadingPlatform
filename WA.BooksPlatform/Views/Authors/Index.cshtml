@@ -7,10 +7,10 @@
 <h2>管理作品</h2>
 
 <p>
-    @Html.ActionLink("Create New", "BookCreate", "Authors")
+    @Html.ActionLink("新建書籍", "BookCreate", "Authors")
 </p>
 
-@if (!Model.Books.Count.Equals(0))
+@if (Model.Books.Count > 0)
 {
     <div class="row">
         <table class="table table-hover">
@@ -29,13 +29,15 @@
                         作者：@Html.DisplayFor(modelItem => item.Author)
                         <br />
                         總字數：@Html.DisplayFor(modelItem => item.TotalWord)
+                        <br />
+                        分類：@Html.DisplayFor(modelItem => item.Category)
                     </td>
                     <td>
                         簡介：<br />
                         @Html.DisplayFor(modelItem => item.BirefBlurb)
                     </td>
                     <td>
-                        <button class="btn btn-primary EditItem" data-id="@item.Id">編輯</button>
+                        <a href="/Authors/CurrentBookChapter?bookId=@item.Id" class="btn btn-primary">編輯</a>
                     </td>
                 </tr>
             }
@@ -85,3 +87,5 @@ else
         </li>
     </ul>
 </nav>
+
+

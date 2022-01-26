@@ -10,5 +10,6 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 	public interface IAuthorRepository
 	{
 		void BookCreate(BookEntity entity);
+		void BookChapterCreate(int bookId, BookChapterEntity entity);
 	}
 }

@@ -15,7 +15,8 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 			{
 				Name = model.Name,
 				Blurb = model.Blurb,
-				ImageFilaName = model.ImageFilaName
+				ImageFilaName = model.ImageFilaName,
+				CategoryId = model.CategoryId
 			};
 		}
 	}

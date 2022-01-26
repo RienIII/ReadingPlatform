@@ -1,0 +1,42 @@
+﻿@model WA.BooksPlatform.Models.ViewModels.BookVM
+
+@{
+    ViewBag.Title = "CurrentBookChapter";
+}
+
+<h2><p class="text-center">上傳章節</p></h2>
+<h4><p class="text-center">書名：@Model.Name</p></h4>
+
+<p>
+    <a href="/Authors/BookChapterCreate?bookId=@Model.Id" class="btn btn-default">新增</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>章節</th>
+        <th>上傳日期</th>
+        <th>
+        </th>
+    </tr>
+    @if (Model.Chapter.Chapter.Count > 0)
+    {
+        foreach (var item in Model.Chapter.Chapter)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.CreateTime</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+	else
+	{
+        <tr>
+            <td>還沒有新增內容喔~</td>
+        </tr>
+	}
+</table>

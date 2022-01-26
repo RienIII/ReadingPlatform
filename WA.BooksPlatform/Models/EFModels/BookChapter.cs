@@ -23,6 +23,8 @@ namespace WA.BooksPlatform.Models.EFModels
 
         public int Status { get; set; }
 
+        public DateTime? CreateTime { get; set; }
+
         public virtual Book Book { get; set; }
     }
 }

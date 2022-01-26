@@ -9,7 +9,7 @@ namespace WA.BooksPlatform.Models.ViewModels
 {
 	public class BookChapterVM
 	{
-		public List<BookChapter> Chapter { get; set; }
+		public List<BookChapterItemVM> Chapter { get; set; }
 		public ForPages ForPages { get; set; }
 	}
 }

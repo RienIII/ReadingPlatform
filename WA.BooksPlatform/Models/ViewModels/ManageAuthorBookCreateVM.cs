@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using WA.BooksPlatform.Models.Entities;
 
 namespace WA.BooksPlatform.Models.ViewModels
 {
@@ -20,5 +21,8 @@ namespace WA.BooksPlatform.Models.ViewModels
 
 		[Display(Name = "封面圖")]
 		public string ImageFilaName { get; set; }
+
+		[Display(Name = "分類選擇")]
+		public int CategoryId { get; set; }
 	}
 }

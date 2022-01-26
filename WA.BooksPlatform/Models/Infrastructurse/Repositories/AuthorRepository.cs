@@ -16,6 +16,15 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		{
 			db = new AppDbContext();
 		}
+
+		public void BookChapterCreate(int bookId, BookChapterEntity entity)
+		{
+			BookChapter chapter = entity.ToEF(bookId);
+
+			db.BookChapters.Add(chapter);
+			db.SaveChanges();
+		}
+
 		public void BookCreate(BookEntity entity)
 		{
 			Book book = entity.ToEF();
