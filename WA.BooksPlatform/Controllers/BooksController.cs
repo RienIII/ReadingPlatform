@@ -62,6 +62,9 @@ namespace WA.BooksPlatform.Controllers
             model.Chapter.ForPages = new ForPages(pages);
             model.Chapter.Chapter = ChapterPages(model.Chapter, model.Chapter.ForPages); // 呼叫ChapterPages(章節內容分頁)進行分頁工作
 
+            var template = new ChapterLink("<p>&emsp;&emsp;{0}</p>");
+            ViewBag.Template = template;
+
             return View(model);
         }
         private BookVM LordBook(int bookId)
@@ -91,9 +94,27 @@ namespace WA.BooksPlatform.Controllers
 			{
                 this.template = temp;
 			}
+
+            /// <summary>
+            /// 選擇章節，所要呈現的超連接
+            /// </summary>
+            /// <param name="bookId">哪一本書籍</param>
+            /// <param name="pages">頁數</param>
+            /// <param name="chapterName">章節名稱</param>
+            /// <returns></returns>
             public MvcHtmlString DisplayChapter(int bookId, int pages, string chapterName)
             {
                 return new MvcHtmlString(string.Format(template, bookId, pages, chapterName));
+            }
+
+            /// <summary>
+            /// 顯示內容，有文字置換
+            /// </summary>
+            /// <param name="artical"></param>
+            /// <returns></returns>
+            public MvcHtmlString DisplayChapter(string artical)
+            {
+                return new MvcHtmlString(string.Format(template, artical));
             }
         }
 	}

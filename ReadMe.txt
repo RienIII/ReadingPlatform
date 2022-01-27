@@ -105,3 +105,8 @@
 	add AuthorRepository
 	add /Models/ViewModels/ManageAuthorBookCreateVM.cs
 	add /Models/ViewModels/ManageAuthorBooksVM.cs
+	新增書籍與新增書籍內容完成
+	要開始做修改章節內容
+	Controller : add Action BookChapterEdit
+	AuthorService : add Method BookChapterEdit
+	AuthorRepo : add Method LordChapter, BookChapterUpdate

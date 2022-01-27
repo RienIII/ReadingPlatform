@@ -47,5 +47,18 @@ namespace WA.BooksPlatform.Models.Services.Core
 
 			return CreateBookResponse.Success();
 		}
+		public CreateBookResponse BookChapterEdit(BookChapterCreateRequest request, int chapterId)
+		{
+			var chapter = authorRepo.LordChapter(chapterId);
+
+			if (chapter == null) return CreateBookResponse.Fail("您所要編輯的章節不存在");
+
+			chapter.Id = chapterId;
+			chapter.Name = request.Name;
+			chapter.Artical = request.Artical;
+			
+			authorRepo.BookChapterUpdate(chapter);
+			return CreateBookResponse.Success();
+		}
 	}
 }

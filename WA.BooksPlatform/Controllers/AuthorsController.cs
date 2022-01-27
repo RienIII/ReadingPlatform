@@ -87,6 +87,8 @@ namespace WA.BooksPlatform.Controllers
 
         public ActionResult BookChapterCreate(int bookId)
 		{
+            ViewBag.BookId = bookId;
+
             return View();
 		}
 		[HttpPost]
@@ -94,15 +96,44 @@ namespace WA.BooksPlatform.Controllers
 		{
             if (!ModelState.IsValid) return View(model);
 
+            model.Artical = model.Artical.Replace("\r\n", "</p><p>&emsp;&emsp;");
             CreateBookResponse response = authorService.BookChapterCreate(model.ToRequest(), bookId);
 
 			if (response.IsSuccess)
 			{
-                return RedirectToAction("CurrentBookChapter", "Authors");
+                return RedirectToAction("CurrentBookChapter", new {bookId = bookId});
 			}
 
             ModelState.AddModelError(string.Empty, response.ErrorMessage);
 			return View(model);
 		}
-	}
+
+        public ActionResult BookChapterEdit(int bookId, int chapterId)
+		{
+            ViewBag.BookId = bookId;
+
+            BookChapterItemVM model = bookRepo.Lord(bookId, true).ToBookChapterItemVM(chapterId);
+
+            model.Artical = model.Artical.Replace("</p><p>&emsp;&emsp;", "\r\n");
+
+            return View(model);
+		}
+
+        [HttpPost]
+        public ActionResult BookChapterEdit(int bookId, int chapterId, BookChapterItemVM model)
+        {
+            if(!ModelState.IsValid)return View(model);
+
+            model.Artical = model.Artical.Replace("\r\n", "</p><p>&emsp;&emsp;");
+            CreateBookResponse response = authorService.BookChapterEdit(model.ToRequest(), chapterId);
+
+			if (response.IsSuccess)
+			{
+                return RedirectToAction("CurrentBookChapter", new { bookId = bookId });
+            }
+
+            ModelState.AddModelError(string.Empty, response.ErrorMessage);
+            return View(model);
+        }
+    }
 }

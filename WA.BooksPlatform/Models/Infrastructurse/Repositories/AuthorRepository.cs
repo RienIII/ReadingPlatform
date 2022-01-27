@@ -16,20 +16,28 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		{
 			db = new AppDbContext();
 		}
+		public BookChapterEntity LordChapter(int chapterId)=>db.BookChapters.Find(chapterId).ToEntity();
 
 		public void BookChapterCreate(int bookId, BookChapterEntity entity)
 		{
-			BookChapter chapter = entity.ToEF(bookId);
-
-			db.BookChapters.Add(chapter);
+			db.BookChapters.Add(entity.ToEF(bookId));
 			db.SaveChanges();
 		}
 
 		public void BookCreate(BookEntity entity)
 		{
-			Book book = entity.ToEF();
+			db.Books.Add(entity.ToEF());
+			db.SaveChanges();
+		}
 
-			db.Books.Add(book);
+		public void BookChapterUpdate(BookChapterEntity entity)
+		{
+			var chapter = db.BookChapters.SingleOrDefault(x=>x.Id == entity.Id);
+
+			chapter.Name = entity.Name;
+			chapter.Artical = entity.Artical;
+			chapter.WordCount = entity.WordCount;
+
 			db.SaveChanges();
 		}
 	}

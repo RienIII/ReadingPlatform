@@ -1,7 +1,8 @@
 ﻿@model WA.BooksPlatform.Models.ViewModels.BookVM
-
+@using WA.BooksPlatform.Controllers
 @{
     ViewBag.Title = "Chapter";
+    var template = (BooksController.ChapterLink)ViewBag.Template;
 }
 <table class="table">
     @if (!Model.Chapter.Chapter.Count.Equals(0))
@@ -15,7 +16,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Artical)
+                    @template.DisplayChapter(item.Artical)
                 </td>
             </tr>
         }
@@ -29,19 +30,21 @@
 </table>
 
 <nav aria-label="Page navigation">
-    <ul class="pagination">
-        <li>
-            @if (Model.Chapter.ForPages.NowPage > 1)
-            {
-                @Html.ActionLink("上一章", "Chapter", new { pages = Model.Chapter.ForPages.NowPage - 1, bookId = Model.Id })
-            }
-        </li>
-        <li>@Html.ActionLink("選擇章節", "ChooseChapter", new {bookId = Model.Id})</li>
-        <li>
-            @if (Model.Chapter.ForPages.NowPage < Model.Chapter.ForPages.MaxPage)
-            {
-                @Html.ActionLink("下一章", "Chapter", new { pages = Model.Chapter.ForPages.NowPage + 1, bookId = Model.Id })
-            }
-        </li>
-    </ul>
+    <p class="text-center">
+        <ul class="pagination">
+            <li>
+                @if (Model.Chapter.ForPages.NowPage > 1)
+                {
+                    @Html.ActionLink("上一章", "Chapter", new { pages = Model.Chapter.ForPages.NowPage - 1, bookId = Model.Id })
+                }
+            </li>
+            <li>@Html.ActionLink("選擇章節", "ChooseChapter", new { bookId = Model.Id })</li>
+            <li>
+                @if (Model.Chapter.ForPages.NowPage < Model.Chapter.ForPages.MaxPage)
+                {
+                    @Html.ActionLink("下一章", "Chapter", new { pages = Model.Chapter.ForPages.NowPage + 1, bookId = Model.Id })
+                }
+            </li>
+        </ul>
+    </p>
 </nav>

@@ -73,5 +73,14 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 				CategoryId = entity.CategoryId
 			};
 		}
+		public static BookChapterItemVM ToBookChapterItemVM(this BookEntity entity, int chapterId)
+		{
+			return new BookChapterItemVM
+			{
+				Id = entity.GetItems().SingleOrDefault(x=>x.Id == chapterId).Id,
+				Name = entity.GetItems().SingleOrDefault(x=>x.Id == chapterId).Name,
+				Artical = entity.GetItems().SingleOrDefault(x=>x.Id == chapterId).Artical
+			};
+		}
 	}
 }
