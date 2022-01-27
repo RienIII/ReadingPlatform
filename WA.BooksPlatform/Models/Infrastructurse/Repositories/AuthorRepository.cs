@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using WA.BooksPlatform.Models.EFModels;
@@ -11,6 +12,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 {
 	public class AuthorRepository : IAuthorRepository
 	{
+		private readonly string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["AppDbContext"].ToString();
 		AppDbContext db;
 		public AuthorRepository()
 		{
@@ -22,6 +24,8 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		{
 			db.BookChapters.Add(entity.ToEF(bookId));
 			db.SaveChanges();
+
+			Update(null, bookId);
 		}
 
 		public void BookCreate(BookEntity entity)
@@ -37,6 +41,27 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 			chapter.Name = entity.Name;
 			chapter.Artical = entity.Artical;
 			chapter.WordCount = entity.WordCount;
+
+			db.SaveChanges();
+
+			Update(entity.Id, null);
+		}
+		public void Update(int? chapterId, int? bookId = 0)
+		{
+			int totalWord;
+			if (bookId.HasValue)
+			{
+				totalWord = db.Books.Find(bookId).TotalWord;
+			}
+			if (chapterId.HasValue)
+			{
+				bookId = db.BookChapters.Find(chapterId).BookId;
+				totalWord = db.Books.Find(bookId).ToBookEntity().TotalWord;
+			}
+			else return;
+
+			var book = db.Books.Find(bookId);
+			book.TotalWord = totalWord;
 
 			db.SaveChanges();
 		}

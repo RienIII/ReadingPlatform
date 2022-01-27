@@ -15,12 +15,12 @@
                 <tr>
 
                     <th>
-                        <a href="/Books/Index?bookId=@item.Id">
+                        <a href="/Books/Index?bookId=@item.Book.Id">
                             <img src="~/Files/BookImages/專題用書本.jpg" style="width:30% ; height:100px ; object-fit:cover;">
                         </a>
                     </th>
                     <td>
-                        <a href="/Books/Index?bookId=@item.Id">@item.Book.Name</a>
+                        <a href="/Books/Index?bookId=@item.Book.Id">@item.Book.Name</a>
                     </td>
                     <td>
                         作者：@Html.DisplayFor(modelItem => item.Book.Author)

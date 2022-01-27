@@ -205,9 +205,6 @@ namespace WA.BooksPlatform.Models.Services.Core
 
 			repository.BecomeAuthor(member.Id, request.Author);
 
-			member.Roles = member.Roles + ",Author";
-			repository.Update(member);
-
 			return BecomeAuthorResponse.Success();
 		}
 	}

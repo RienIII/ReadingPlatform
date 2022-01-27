@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WA.BooksPlatform.Models.EFModels;
 using WA.BooksPlatform.Models.Entities;
 using WA.BooksPlatform.Models.Infrastructurse;
+using WA.BooksPlatform.Models.Infrastructurse.Exts;
 using WA.BooksPlatform.Models.Infrastructurse.Repositories;
 using WA.BooksPlatform.Models.Services.Core;
 using WA.BooksPlatform.Models.Services.Core.Interfaces;
@@ -54,10 +55,22 @@ namespace WA.BooksPlatform.Controllers
 			return View(model);
 		}
 
+		/// <summary>
+		/// 列出有哪些分類
+		/// </summary>
+		/// <returns></returns>
 		public ActionResult Category()
 		{
 			return View(categoryRepo.Search(null));
 		}
+
+		/// <summary>
+		/// 搜尋書籍，可以用分類、搜尋條件找書
+		/// </summary>
+		/// <param name="categoryId">分類ID</param>
+		/// <param name="search">搜尋條件</param>
+		/// <param name="pages">當前頁數</param>
+		/// <returns></returns>
 		public ActionResult CategoryBooks(int? categoryId, string search, int pages = 1)
 		{
 			var template = new CategoryLink("<a href=\"/Home/CategoryBooks?categoryId={0}&search={1}&pages={2}\" class=\"btn btn-default active\">{3}</a>");
@@ -67,7 +80,6 @@ namespace WA.BooksPlatform.Controllers
 				ForPages = new ForPages(pages),
 				Search = search
 			};
-
 			BookRepositoryEntity entity = new BookRepositoryEntity
 			{
 				CategoryId = categoryId,
@@ -84,6 +96,12 @@ namespace WA.BooksPlatform.Controllers
 
 			return View(model);
 		}
+
+		/// <summary>
+		/// 書架，顯示書架
+		/// </summary>
+		/// <param name="pages">當前頁數</param>
+		/// <returns></returns>
 		[Authorize]
 		public ActionResult Bookshelf(int pages = 1)
 		{
@@ -96,6 +114,12 @@ namespace WA.BooksPlatform.Controllers
 
 			return View(model);
 		}
+
+		/// <summary>
+		/// 新增書籍到書架裡面
+		/// </summary>
+		/// <param name="bookId">要新增至書架的書籍ID</param>
+		/// <returns></returns>
 		[Authorize]
 		public ActionResult AddItem2Bookshelf(int bookId)
 		{
@@ -105,6 +129,12 @@ namespace WA.BooksPlatform.Controllers
 
 			return new EmptyResult();
 		}
+
+		/// <summary>
+		/// 選擇要移出書架的書籍，前提是要有在書架裡面
+		/// </summary>
+		/// <param name="bookId">要移出書架的書籍ID</param>
+		/// <returns></returns>
 		public ActionResult DelectItem2Bookshelf(int bookId)
 		{
 			BookshelfService service = new BookshelfService(bookshelfRepo, bookRepo);
@@ -114,6 +144,12 @@ namespace WA.BooksPlatform.Controllers
 
 			return new EmptyResult();
 		}
+
+		/// <summary>
+		/// 顯示排行
+		/// </summary>
+		/// <param name="sort">排序方式</param>
+		/// <returns></returns>
 		public ActionResult Rank(string sort)
 		{
 			BookRankVM model = new BookRankVM();

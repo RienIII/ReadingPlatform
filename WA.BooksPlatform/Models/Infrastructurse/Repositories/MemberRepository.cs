@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Dapper;
 using WA.BooksPlatform.Entities;
 using WA.BooksPlatform.Models.EFModels;
 using WA.BooksPlatform.Models.Entities;
@@ -12,6 +15,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 {
 	public class MemberRepository : IMemberRepository
 	{
+		private readonly string connString = ConfigurationManager.ConnectionStrings["AppDbContext"].ToString();
 		private AppDbContext db;
 		
 		public MemberRepository()
@@ -24,13 +28,12 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		}
 		public void ActiveRegister(int memberId)
 		{
-			var member = db.Members.Find(memberId);
-
-			member.IsConfirmed = true;
-			member.ConfirmCode = null;
-			member.Roles = "General";
-
-			db.SaveChanges();
+			string sql = @"update Members set IsConfirmed=@IsConfirmed, ConfirmCode=NULL, Roles=@Roles where Id=@Id";
+			var member = new Member { IsConfirmed = true, Roles = "General" , Id = memberId};
+			using (var conn = new SqlConnection(connString))
+			{
+				conn.Execute(sql, member);
+			}
 		}
 
 		public void Create(MemberEntity entity)
@@ -99,10 +102,13 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 
 		public void BecomeAuthor(int memberId, string author)
 		{
-			Author becomAuthor = new Author() { Name = author, MemberId = memberId};
-			
-			db.Authors.Add(becomAuthor);
-			db.SaveChanges();
+			string sql = @"insert into Authors(Name, MemberId)values(@Name, @MemberId);update Members set Roles=@Roles";
+			var becomeAuthor = new { Name = author, MemberId = memberId , Roles = "General,Author" };
+
+			using (var conn = new SqlConnection(connString))
+			{
+				conn.Execute(sql, becomeAuthor);
+			}
 		}
 	}
 }

@@ -31,6 +31,11 @@ namespace WA.BooksPlatform.Controllers
             authorService = new AuthorService(bookRepo, memberRepo);
 		}
 
+        /// <summary>
+        /// 呈現作者的作品
+        /// </summary>
+        /// <param name="pages">要呈現的頁數</param>
+        /// <returns></returns>
         public ActionResult Index(int pages = 1)
         {
             ManageAuthorBooksVM model = new ManageAuthorBooksVM { ForPages = new ForPages(pages) };
@@ -55,7 +60,14 @@ namespace WA.BooksPlatform.Controllers
 
             return View();
 		}
+        /// <summary>
+        /// 建立書籍
+        /// </summary>
+        /// <param name="model">建立書籍的基本資料</param>
+        /// <param name="file">封面圖</param>
+        /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult BookCreate(ManageAuthorBookCreateVM model, HttpPostedFileBase file)
         {
             if(!ModelState.IsValid)return View(model);
@@ -72,6 +84,11 @@ namespace WA.BooksPlatform.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 顯示書籍裡面的章節
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
         public ActionResult CurrentBookChapter(int bookId)
 		{
             string author = memberRepo.Lord(User.Identity.Name).Author.Name;
@@ -92,7 +109,8 @@ namespace WA.BooksPlatform.Controllers
             return View();
 		}
 		[HttpPost]
-		public ActionResult BookChapterCreate(int bookId, BookChapterItemVM model)
+        [ValidateAntiForgeryToken]
+        public ActionResult BookChapterCreate(int bookId, BookChapterItemVM model)
 		{
             if (!ModelState.IsValid) return View(model);
 
@@ -120,6 +138,7 @@ namespace WA.BooksPlatform.Controllers
 		}
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult BookChapterEdit(int bookId, int chapterId, BookChapterItemVM model)
         {
             if(!ModelState.IsValid)return View(model);

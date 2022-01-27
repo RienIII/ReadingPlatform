@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Artical, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10 input-group">
-                <textarea name="Artical"   style="max-width:800px;" wrap="soft" class="form-control" placeholder="書籍內容輸入處"></textarea>
+                <textarea name="Artical"   style="max-width:800px;" wrap="hard" class="form-control" placeholder="書籍內容輸入處"></textarea>
                 @Html.ValidationMessageFor(model => model.Artical, "", new { @class = "text-danger" })
             </div>
         </div>

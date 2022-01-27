@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WA.BooksPlatform", "WA.Book
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructurse", "Infrastructurse", "{1DE7CDB0-26B6-47A3-92F7-07AA07CD0E68}"
 	ProjectSection(SolutionItems) = preProject
+		DataBase.txt = DataBase.txt
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject

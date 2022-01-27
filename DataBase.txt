@@ -1,0 +1,331 @@
+USE [master]
+GO
+/****** Object:  Database [ReadingPlatform]    Script Date: 2022/1/27 下午 04:48:35 ******/
+CREATE DATABASE [ReadingPlatform]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'ReadingPlatform', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQL2019\MSSQL\DATA\ReadingPlatform.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'ReadingPlatform_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQL2019\MSSQL\DATA\ReadingPlatform_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [ReadingPlatform] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [ReadingPlatform].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [ReadingPlatform] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [ReadingPlatform] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [ReadingPlatform] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [ReadingPlatform] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [ReadingPlatform] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET RECOVERY FULL 
+GO
+ALTER DATABASE [ReadingPlatform] SET  MULTI_USER 
+GO
+ALTER DATABASE [ReadingPlatform] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [ReadingPlatform] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [ReadingPlatform] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [ReadingPlatform] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [ReadingPlatform] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [ReadingPlatform] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'ReadingPlatform', N'ON'
+GO
+ALTER DATABASE [ReadingPlatform] SET QUERY_STORE = OFF
+GO
+USE [ReadingPlatform]
+GO
+/****** Object:  User [sa5]    Script Date: 2022/1/27 下午 04:48:35 ******/
+CREATE USER [sa5] FOR LOGIN [sa5] WITH DEFAULT_SCHEMA=[dbo]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [sa5]
+GO
+/****** Object:  Table [dbo].[Authors]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Authors](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MemberId] [int] NULL,
+	[Name] [nvarchar](30) NOT NULL,
+ CONSTRAINT [PK_Authors] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[BookChapters]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BookChapters](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Artical] [nvarchar](max) NOT NULL,
+	[WordCount] [int] NOT NULL,
+	[BookId] [int] NOT NULL,
+	[Status] [int] NOT NULL,
+	[CreateTime] [datetime] NULL,
+ CONSTRAINT [PK_BookChapters] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[BookParts]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BookParts](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[SubTotal] [int] NOT NULL,
+	[BookId] [int] NOT NULL,
+ CONSTRAINT [PK_BookParts] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Books]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Books](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Blurb] [nvarchar](2000) NOT NULL,
+	[ImageFileName] [nvarchar](40) NULL,
+	[AuthorId] [int] NOT NULL,
+	[CategoryId] [int] NULL,
+	[Clicks] [int] NOT NULL,
+	[Likes] [int] NOT NULL,
+	[Collections] [int] NOT NULL,
+	[ModifiedTime] [datetime] NULL,
+	[TotalWord] [int] NOT NULL,
+	[Status] [bit] NOT NULL,
+ CONSTRAINT [PK_Books] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[BookshelfItems]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BookshelfItems](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[BookshelfId] [int] NOT NULL,
+	[BookId] [int] NOT NULL,
+	[WatchTime] [datetime] NULL,
+ CONSTRAINT [PK_BookshelfItmes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Bookshelfs]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Bookshelfs](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[MemberId] [int] NOT NULL,
+ CONSTRAINT [PK_Bookshelfs] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Categories]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categories](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](20) NOT NULL,
+	[DisplayOrder] [int] NOT NULL,
+ CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Members]    Script Date: 2022/1/27 下午 04:48:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Members](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Account] [nvarchar](30) NOT NULL,
+	[Password] [nvarchar](70) NOT NULL,
+	[Name] [nvarchar](30) NOT NULL,
+	[Email] [nvarchar](256) NOT NULL,
+	[ImageFileName] [nvarchar](40) NULL,
+	[IsConfirmed] [bit] NOT NULL,
+	[ConfirmCode] [nvarchar](40) NULL,
+	[ResetPasswordCode] [nvarchar](40) NULL,
+	[Roles] [nvarchar](50) NULL,
+	[CreateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_Members] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[BookChapters] ADD  CONSTRAINT [DF_BookChapters_CreateTime]  DEFAULT (getdate()) FOR [CreateTime]
+GO
+ALTER TABLE [dbo].[Books] ADD  CONSTRAINT [DF_Books_Clicks]  DEFAULT ((0)) FOR [Clicks]
+GO
+ALTER TABLE [dbo].[Books] ADD  CONSTRAINT [DF_Books_Likes]  DEFAULT ((0)) FOR [Likes]
+GO
+ALTER TABLE [dbo].[Books] ADD  CONSTRAINT [DF_Books_Collections]  DEFAULT ((0)) FOR [Collections]
+GO
+ALTER TABLE [dbo].[Books] ADD  CONSTRAINT [DF_Books_TotalWord]  DEFAULT ((0)) FOR [TotalWord]
+GO
+ALTER TABLE [dbo].[Books] ADD  CONSTRAINT [DF_Books_Status]  DEFAULT ((1)) FOR [Status]
+GO
+ALTER TABLE [dbo].[Bookshelfs] ADD  CONSTRAINT [DF_Bookshelfs_Name]  DEFAULT (N'書架1') FOR [Name]
+GO
+ALTER TABLE [dbo].[Members] ADD  CONSTRAINT [DF_Members_CreateTime]  DEFAULT (getdate()) FOR [CreateTime]
+GO
+ALTER TABLE [dbo].[Authors]  WITH CHECK ADD  CONSTRAINT [FK_Authors_Members] FOREIGN KEY([MemberId])
+REFERENCES [dbo].[Members] ([Id])
+GO
+ALTER TABLE [dbo].[Authors] CHECK CONSTRAINT [FK_Authors_Members]
+GO
+ALTER TABLE [dbo].[BookChapters]  WITH CHECK ADD  CONSTRAINT [FK_BookChapters_Books] FOREIGN KEY([BookId])
+REFERENCES [dbo].[Books] ([Id])
+GO
+ALTER TABLE [dbo].[BookChapters] CHECK CONSTRAINT [FK_BookChapters_Books]
+GO
+ALTER TABLE [dbo].[Books]  WITH CHECK ADD  CONSTRAINT [FK_Books_Authors] FOREIGN KEY([AuthorId])
+REFERENCES [dbo].[Authors] ([Id])
+GO
+ALTER TABLE [dbo].[Books] CHECK CONSTRAINT [FK_Books_Authors]
+GO
+ALTER TABLE [dbo].[Books]  WITH CHECK ADD  CONSTRAINT [FK_Books_Categories] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[Categories] ([Id])
+GO
+ALTER TABLE [dbo].[Books] CHECK CONSTRAINT [FK_Books_Categories]
+GO
+ALTER TABLE [dbo].[BookshelfItems]  WITH CHECK ADD  CONSTRAINT [FK_BookshelfItmes_Books] FOREIGN KEY([BookId])
+REFERENCES [dbo].[Books] ([Id])
+GO
+ALTER TABLE [dbo].[BookshelfItems] CHECK CONSTRAINT [FK_BookshelfItmes_Books]
+GO
+ALTER TABLE [dbo].[BookshelfItems]  WITH CHECK ADD  CONSTRAINT [FK_BookshelfItmes_Bookshelfs] FOREIGN KEY([BookshelfId])
+REFERENCES [dbo].[Bookshelfs] ([Id])
+GO
+ALTER TABLE [dbo].[BookshelfItems] CHECK CONSTRAINT [FK_BookshelfItmes_Bookshelfs]
+GO
+ALTER TABLE [dbo].[Bookshelfs]  WITH CHECK ADD  CONSTRAINT [FK_Bookshelfs_Members] FOREIGN KEY([MemberId])
+REFERENCES [dbo].[Members] ([Id])
+GO
+ALTER TABLE [dbo].[Bookshelfs] CHECK CONSTRAINT [FK_Bookshelfs_Members]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Authors', @level2type=N'COLUMN',@level2name=N'Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'文章內容' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'BookChapters', @level2type=N'COLUMN',@level2name=N'Artical'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'字數' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'BookChapters', @level2type=N'COLUMN',@level2name=N'WordCount'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'1=免費章節；2=付費章節；3=不給看' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'BookChapters', @level2type=N'COLUMN',@level2name=N'Status'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'卷名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'BookParts', @level2type=N'COLUMN',@level2name=N'Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'簡介' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'Blurb'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'封面圖' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'ImageFileName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'AuthorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'分類ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'CategoryId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'點擊數' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'Clicks'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'按讚數' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'Likes'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'收藏數' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'Collections'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'異動時間' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'ModifiedTime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'總字數' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'TotalWord'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'1=true上架；2=false下架' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Books', @level2type=N'COLUMN',@level2name=N'Status'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'書架名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Bookshelfs', @level2type=N'COLUMN',@level2name=N'Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'分類名稱' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Categories', @level2type=N'COLUMN',@level2name=N'Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'大頭照' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Members', @level2type=N'COLUMN',@level2name=N'ImageFileName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否有啟用資格' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Members', @level2type=N'COLUMN',@level2name=N'IsConfirmed'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'啟動碼' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Members', @level2type=N'COLUMN',@level2name=N'ConfirmCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'重設密碼時，會有新的確認碼' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Members', @level2type=N'COLUMN',@level2name=N'ResetPasswordCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'角色權限(General一般會員、VIP、Author作者)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Members', @level2type=N'COLUMN',@level2name=N'Roles'
+GO
+USE [master]
+GO
+ALTER DATABASE [ReadingPlatform] SET  READ_WRITE 
+GO

@@ -34,6 +34,7 @@ namespace WA.BooksPlatform.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterVM model)
         {
             if(!ModelState.IsValid)return View(model);
@@ -76,6 +77,7 @@ namespace WA.BooksPlatform.Controllers
             return View();
 		}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginVM model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -109,6 +111,7 @@ namespace WA.BooksPlatform.Controllers
             return View();
 		}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ForgetPassword(ForgetPasswordVM model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -139,6 +142,7 @@ namespace WA.BooksPlatform.Controllers
             return View();
 		}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ForgetPasswordReset(int memberId, string resetConfirmCode, ForgetPasswordResetVM model)
         {
             if(!ModelState.IsValid) return View(model);
@@ -179,6 +183,7 @@ namespace WA.BooksPlatform.Controllers
             return View(model);
 		}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditProfile(ResetProfileVM model, HttpPostedFileBase file)
 		{
             if(!ModelState.IsValid)return View(model);
@@ -204,6 +209,7 @@ namespace WA.BooksPlatform.Controllers
             return View();
 		}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditPassword(ResetPasswordVM model)
 		{
             if (!ModelState.IsValid) return View(model);
@@ -225,6 +231,7 @@ namespace WA.BooksPlatform.Controllers
             return View();
 		}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult BecomeAuthor(AuthorVM model)
         {
             if(!ModelState.IsValid) return View(model);
