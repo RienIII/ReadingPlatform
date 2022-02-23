@@ -1,0 +1,52 @@
+﻿@model WA.BooksPlatform.Models.ViewModels.MessageBoardItemIndexVM
+@using WA.BooksPlatform.Controllers
+@{
+    ViewBag.Title = "MessageBoardItemIndex";
+    int bookId = (int)ViewBag.BookId;
+    int messageBoardId = (int)ViewBag.MessageBoardId;
+    var chapter = (MessageBoardsController.DisplayChapterHtml)ViewBag.ChapterHtml;
+}
+
+<h2>留言</h2>
+
+<p>
+    @Html.ActionLink("留言", "MessageBoardItemCreate", new {messageBoardId=messageBoardId})
+</p>
+<table class="table">
+    <tr>
+        <th>@Model.MessageBoard.MemberName</th>
+        <th>評論時間 | @Model.MessageBoard.CreateTime</th>
+    </tr>
+    <tr>
+        <th>@Model.MessageBoard.Title</th>
+    </tr>
+    <tr>
+        <th>@chapter.ChapterHtml(Model.MessageBoard.Chapter)</th>
+    </tr>
+    @if (Model.MessageBoard.GetItem().Count > 0)
+    {
+        foreach (var item in Model.MessageBoard.GetItem())
+        {
+            <tr>
+                <td>@item.MemberName</td>
+                <td>留言時間 | @item.CreateTime</td>
+            </tr>
+            <tr>
+                <td>@chapter.ChapterHtml(item.Chapter)</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>
+                暫無留言
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("返回", "Index", new { bookId = bookId, pages=1 }, new { @class = "btn btn-default" })
+</div>

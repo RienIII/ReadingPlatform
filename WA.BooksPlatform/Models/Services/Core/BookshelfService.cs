@@ -48,15 +48,8 @@ namespace WA.BooksPlatform.Models.Services.Core
 		{
 			var bookshelf = Current(memberId);
 
-			pages.MaxPage = Convert.ToInt32
-			(
-				Math.Ceiling
-				(
-					Convert.ToDouble(bookshelf.Books.Count()) / pages.ItemNumPage
-				)
-			);
-
-			pages.SetPage();
+			double count = bookshelf.Books.Count();
+			pages = ForPagesExts.GetPages(count, pages);
 
 			return bookshelf.Books
 				.OrderBy(x => x.Id)

@@ -196,3 +196,5 @@ D:\C#專案\ReadingPlatform\WA.BooksPlatform\bin\zh-Hant\System.Web.WebPages.Raz
 D:\C#專案\ReadingPlatform\WA.BooksPlatform\obj\Debug\WA.BooksPlatform.csproj.CopyComplete
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\Dapper.dll
 D:\專題\BooksPlatform.Solution\WA.BooksPlatform\bin\Dapper.xml
+D:\C#專案\ReadingPlatform\WA.BooksPlatform\bin\Dapper.dll
+D:\C#專案\ReadingPlatform\WA.BooksPlatform\bin\Dapper.xml

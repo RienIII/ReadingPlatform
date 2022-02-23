@@ -28,7 +28,7 @@ namespace DataValidator
 				string value = Convert.ToString(Data);
 				if (string.IsNullOrEmpty(value)) throw new Exception($"{DisplayName}必填");
 			}
-
+			
 			return this;
 		}
 

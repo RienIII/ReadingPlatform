@@ -84,3 +84,10 @@ D:\專題\BooksPlatform.Solution\ConsoleApp.ReadingPlatform\obj\Debug\ConsoleApp
 D:\專題\BooksPlatform.Solution\ConsoleApp.ReadingPlatform\obj\Debug\ConsoleApp.ReadingPlatform.csproj.CopyComplete
 D:\專題\BooksPlatform.Solution\ConsoleApp.ReadingPlatform\obj\Debug\ConsoleApp.ReadingPlatform.exe
 D:\專題\BooksPlatform.Solution\ConsoleApp.ReadingPlatform\obj\Debug\ConsoleApp.ReadingPlatform.pdb
+D:\C#專案\ReadingPlatform\ConsoleApp.ReadingPlatform\bin\Debug\Dapper.dll
+D:\C#專案\ReadingPlatform\ConsoleApp.ReadingPlatform\bin\Debug\WebGrease.dll
+D:\C#專案\ReadingPlatform\ConsoleApp.ReadingPlatform\bin\Debug\Antlr3.Runtime.dll
+D:\C#專案\ReadingPlatform\ConsoleApp.ReadingPlatform\bin\Debug\Newtonsoft.Json.dll
+D:\C#專案\ReadingPlatform\ConsoleApp.ReadingPlatform\bin\Debug\Dapper.xml
+D:\C#專案\ReadingPlatform\ConsoleApp.ReadingPlatform\bin\Debug\Antlr3.Runtime.pdb
+D:\C#專案\ReadingPlatform\ConsoleApp.ReadingPlatform\bin\Debug\Newtonsoft.Json.xml

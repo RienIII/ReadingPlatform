@@ -41,6 +41,13 @@ namespace WA.BooksPlatform.Models.Services.Core.Interfaces
 		MemberEntity Lord(int memberId);
 
 		/// <summary>
+		/// 只要會員的ID
+		/// </summary>
+		/// <param name="account"></param>
+		/// <returns></returns>
+		int LordMemberId(string account);
+
+		/// <summary>
 		/// 作者資訊是否存在
 		/// </summary>
 		/// <param name="author">作者名稱</param>

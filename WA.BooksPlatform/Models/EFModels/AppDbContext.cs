@@ -20,6 +20,8 @@ namespace WA.BooksPlatform.Models.EFModels
 		public virtual DbSet<Bookshelf> Bookshelfs { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
 		public virtual DbSet<Member> Members { get; set; }
+		public virtual DbSet<MessageBoardItem> MessageBoardItems { get; set; }
+		public virtual DbSet<MessageBoard> MessageBoards { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -45,6 +47,16 @@ namespace WA.BooksPlatform.Models.EFModels
 
 			modelBuilder.Entity<Member>()
 				.HasMany(e => e.Bookshelfs)
+				.WithRequired(e => e.Member)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<Member>()
+				.HasMany(e => e.MessageBoardItems)
+				.WithRequired(e => e.Member)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<Member>()
+				.HasMany(e => e.MessageBoards)
 				.WithRequired(e => e.Member)
 				.WillCascadeOnDelete(false);
 		}

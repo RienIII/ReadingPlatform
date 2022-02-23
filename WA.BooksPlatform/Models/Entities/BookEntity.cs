@@ -88,7 +88,7 @@ namespace WA.BooksPlatform.Models.Entities
 			set => _Category = value == null ? null : value;
 		}
 
-		private List<BookChapterEntity> Items;
+		public List<BookChapterEntity> Items;
 		public List<BookChapterEntity> GetItems() => this.Items;
 
 		/// <summary>

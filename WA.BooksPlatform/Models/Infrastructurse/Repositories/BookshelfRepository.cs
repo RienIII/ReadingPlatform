@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Dapper;
 using System.Data.Entity;
 using WA.BooksPlatform.Models.EFModels;
 using WA.BooksPlatform.Models.Entities;
 using WA.BooksPlatform.Models.Services.Core.Interfaces;
 using WA.BooksPlatform.Models.Infrastructurse.Exts;
+using System.Data.SqlClient;
 
 namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 {
 	public class BookshelfRepository : IBookshelfRepository
 	{
+		private readonly string connStr = System.Configuration
+												.ConfigurationManager
+												.ConnectionStrings["AppDbContext"]
+												.ToString();
 		private AppDbContext db;
 		public BookshelfRepository()
 		{
@@ -44,34 +50,58 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 		}
 		public void Save(BookshelfEntity entity)
 		{
-			Bookshelf bookshelf = entity.ToEF();
+			int count = GetBookshelfItemCount(entity.Id);
 
-			Bookshelf efInDb = db.Bookshelfs
-				.Include(x=>x.BookshelfItems)
-				.SingleOrDefault(x=>x.Id == entity.Id);
+			List<BookshelfItem> items = new List<BookshelfItem>();
 
-			var efItemInDb = db.BookshelfItems.Where(x=>x.BookshelfId == entity.Id);
-
-			if (efInDb.BookshelfItems.Count>0)
+			if (count > 0)
 			{
-				foreach (var item in efItemInDb)
+				DeleteBookshelfItem(entity.Id);
+				
+				foreach (var item in entity.Books)
 				{
-					db.BookshelfItems.Remove(item);
+					items.Add(new BookshelfItem { BookId = item.Book.Id, BookshelfId = entity.Id});
 				}
-				foreach (var item in bookshelf.BookshelfItems)
-				{
-					db.BookshelfItems.Add(item);
-				}
-				db.SaveChanges();
+				InsertBookshelfItem(entity.Id, items);
 				return;
 			}
 
-			foreach (var item in bookshelf.BookshelfItems)
+			foreach (var item in entity.Books)
 			{
-				db.BookshelfItems.Add(item);
+				items.Add(new BookshelfItem { BookId = item.Book.Id, BookshelfId = entity.Id });
+			}
+			InsertBookshelfItem(entity.Id, items);
+		}
+		private void DeleteBookshelfItem(int bookshelfId)
+		{
+			string sql = @"delete from BookshelfItems where BookshelfId = @BookshelfId";
+			var data = new { BookshelfId = bookshelfId };
+			using (var conn = new SqlConnection(connStr))
+			{
+				conn.Execute(sql, data);
+			}
+		}
+		private void InsertBookshelfItem(int bookshelfId, List<BookshelfItem> items)
+		{
+			string sql = @"insert into BookshelfItems(BookId, BookshelfId)values(@BookId, @BookshelfId)";
+			List<BookshelfItem> bookshelfItems = items;
+			using (var conn = new SqlConnection(connStr))
+			{
+				conn.Execute(sql, bookshelfItems);
+			}
+		}
+		private int GetBookshelfItemCount(int bookshelfId)
+		{
+			string sql = @"select BookshelfId from BookshelfItems where BookshelfId=@BookshelfId";
+			var bookshelf = new { BookshelfId = bookshelfId };
+
+			int count = 0;
+			using (var conn = new SqlConnection(connStr))
+			{
+				count = conn.Query<BookshelfItem>(sql, bookshelf).ToList().Count;
 			}
 
-			db.SaveChanges();
+			return count;
 		}
 	}
 }

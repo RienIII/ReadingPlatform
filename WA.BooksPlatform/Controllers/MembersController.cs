@@ -137,19 +137,26 @@ namespace WA.BooksPlatform.Controllers
 		{
             return View();
 		}
-        public ActionResult ForgetPasswordReset(string memberId, string resetConfirmCode)
+        public ActionResult ForgetPasswordReset(int memberId, string resetPasswordCode)
 		{
+            RegisterResponse response = memberService.ForgetPassword(memberId, resetPasswordCode);
+
+			if (!response.IsSuccess)
+			{
+                return View("ForgetPasswordView");
+			}
+
             return View();
 		}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ForgetPasswordReset(int memberId, string resetConfirmCode, ForgetPasswordResetVM model)
+        public ActionResult ForgetPasswordReset(int memberId, string resetPasswordCode, ForgetPasswordResetVM model)
         {
             if(!ModelState.IsValid) return View(model);
 
             RegisterResponse response = 
                 memberService
-                .ForgetPassword(model.ToRequest(memberId, resetConfirmCode));
+                .ForgetPassword(model.ToRequest(memberId, resetPasswordCode));
 
 			if (response.IsSuccess)
 			{
@@ -158,6 +165,18 @@ namespace WA.BooksPlatform.Controllers
             ModelState.AddModelError(string.Empty, response.ErrorMessage);
             return View(model);
         }
+        /// <summary>
+        /// 會員ID 會員重設密碼的確認碼 有誤時
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ForgetPasswordView()
+		{
+            return View();
+		}
+        /// <summary>
+        /// 重設成功的畫面
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ForgetPasswordResetView()
 		{
             return View();

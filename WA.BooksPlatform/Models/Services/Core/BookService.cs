@@ -58,8 +58,6 @@ namespace WA.BooksPlatform.Models.Services.Core
 		{
 			if(bookRepository.IsExist(request.Name)) return CreateBookResponse.Fail("您所創建的書名已被使用!");
 
-
-
 			return CreateBookResponse.Success();
 		}
 	}

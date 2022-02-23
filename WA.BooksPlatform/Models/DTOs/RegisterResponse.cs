@@ -24,10 +24,12 @@ namespace WA.BooksPlatform.Models.DTOs
 					Email = entity.Email,
 					Name = entity.Name,
 					ConfirmCode = entity.ConfirmCode,
+					ResetPasswordCode = entity.ResetPasswordCode,
 					Role = entity.Roles
 				}
 			};
 		}
+		public static RegisterResponse Success() => new RegisterResponse { IsSuccess = true };
 		public static RegisterResponse Fail(string errorMsg)
 		{
 			return new RegisterResponse

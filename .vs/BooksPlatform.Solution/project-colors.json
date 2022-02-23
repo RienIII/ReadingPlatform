@@ -36,14 +36,14 @@
       "DisplayName": "其他檔案",
       "ColorIndex": -1
     },
-    "69a75f97-63bf-40d5-9e91-f24e712b5e62": {
-      "ProjectGuid": "69a75f97-63bf-40d5-9e91-f24e712b5e62",
-      "DisplayName": "TestProject.ReadingPlatform",
-      "ColorIndex": 6
-    },
     "4601a1aa-4671-46af-b411-1d0fa983fd4c": {
       "ProjectGuid": "4601a1aa-4671-46af-b411-1d0fa983fd4c",
       "DisplayName": "ConsoleApp.ReadingPlatform",
+      "ColorIndex": 6
+    },
+    "69a75f97-63bf-40d5-9e91-f24e712b5e62": {
+      "ProjectGuid": "69a75f97-63bf-40d5-9e91-f24e712b5e62",
+      "DisplayName": "TestProject.ReadingPlatform",
       "ColorIndex": 7
     }
   },

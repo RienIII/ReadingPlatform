@@ -14,7 +14,6 @@ namespace WA.BooksPlatform.Models.ViewModels
 		[StringLength(50)]
 		public string Name { get; set; }
 
-		[Display(Name = "暱稱")]
 		[StringLength(256)]
 		[EmailAddress]
 		[Required(ErrorMessage = "必填")]

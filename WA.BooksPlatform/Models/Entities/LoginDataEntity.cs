@@ -15,6 +15,7 @@ namespace WA.BooksPlatform.Entities
 		public string Name { get; set; }
 		public string Email { get; set; }
 		public string ConfirmCode { get; set; }
+		public string ResetPasswordCode { get; set; }
 		public string Role { get; set; }
 
 	}

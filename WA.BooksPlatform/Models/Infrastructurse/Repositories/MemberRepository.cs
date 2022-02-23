@@ -72,6 +72,19 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 				.Find(memberId)
 				.ToEntity();
 		}
+		public int LordMemberId(string account)
+		{
+			string sql = @"select Id from Members where Account=@Account";
+			var data = new { Account = account };
+
+			Member member = new Member();
+			using(var conn = new SqlConnection(connString))
+			{
+				var result = conn.QuerySingleOrDefault(sql, data);
+				member.Id = result.Id;
+			}
+			return member.Id;
+		}
 
 		public bool IsAuthorExist(string author)
 			=>db.Authors.AsNoTracking().SingleOrDefault(x=>x.Name == author) != null;

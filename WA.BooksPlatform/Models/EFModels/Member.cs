@@ -13,6 +13,8 @@ namespace WA.BooksPlatform.Models.EFModels
         {
             Authors = new HashSet<Author>();
             Bookshelfs = new HashSet<Bookshelf>();
+            MessageBoardItems = new HashSet<MessageBoardItem>();
+            MessageBoards = new HashSet<MessageBoard>();
         }
 
         public int Id { get; set; }
@@ -54,5 +56,11 @@ namespace WA.BooksPlatform.Models.EFModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bookshelf> Bookshelfs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MessageBoardItem> MessageBoardItems { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MessageBoard> MessageBoards { get; set; }
     }
 }

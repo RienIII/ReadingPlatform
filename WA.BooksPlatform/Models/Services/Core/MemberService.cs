@@ -115,6 +115,18 @@ namespace WA.BooksPlatform.Models.Services.Core
 
 			return RegisterResponse.Success(entity);
 		}
+		public RegisterResponse ForgetPassword(int memberId, string resetPasswordCode)
+		{
+			MemberEntityNoPassword entity = repository.Lord(memberId);
+
+			if (entity == null) return RegisterResponse.Fail("找不到對應的會員紀錄");
+			if (string.Compare(entity.ResetPasswordCode, resetPasswordCode) != 0)
+			{
+				return RegisterResponse.Fail("找不到對應的會員紀錄");
+			}
+
+			return RegisterResponse.Success();
+		}
 		/// <summary>
 		/// 按Email連結重設密碼
 		/// </summary>
@@ -127,7 +139,7 @@ namespace WA.BooksPlatform.Models.Services.Core
 			{
 				return RegisterResponse.Fail("找不到對應的會員紀錄");
 			}
-			if (string.Compare(entity.ResetPasswordCode, request.ConfirmCode) != 0)
+			if (string.Compare(entity.ResetPasswordCode, request.ResetPasswordCode) != 0)
 			{
 				return RegisterResponse.Fail("找不到對應的會員紀錄");
 			}

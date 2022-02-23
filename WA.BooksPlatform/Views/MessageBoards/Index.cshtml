@@ -1,0 +1,95 @@
+﻿@model WA.BooksPlatform.Models.ViewModels.MessageBoardIndexVM
+@using WA.BooksPlatform.Controllers
+@{
+    ViewBag.Title = "Index";
+    int bookId = (int)ViewBag.BookId;
+    var chapter = (MessageBoardsController.DisplayChapterHtml)ViewBag.ChapterHtml;
+}
+
+<h2>評論區</h2>
+
+<p>
+    @Html.ActionLink("評論", "MessageBoardCreate", new { bookId = bookId })
+</p>
+<table class="table table-hover">
+
+    @if (Model.MessageBoard.Count > 0)
+	{
+        foreach (var item in Model.MessageBoard)
+        {
+            <tr>
+                <td>
+                    @item.MemberName
+                </td>
+                <td>
+                    評論時間 | @item.CreateTime
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @chapter.ChapterHtml(item.Chapter)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/MessageBoards/MessageBoardItemIndex?bookId=@bookId&messageBoardId=@item.Id" class="btn btn-primary">留言(@Model.MessageBoard.SingleOrDefault(x=>x.Id == item.Id).GetItem().Count)</a>
+                </td>
+            </tr>
+        }
+    }
+	else
+	{
+        <tr>
+            <td>
+                暫無評論
+            </td>
+        </tr>
+	}
+
+</table>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            @if (Model.ForPages.NowPage > 1)
+            {
+                @Html.ActionLink("<< ", "Index", new { pages = 1, bookId=bookId })
+                @Html.ActionLink("<", "Index", new { pages = Model.ForPages.NowPage - 1, bookId=bookId })
+            }
+        </li>
+        @for (var intPage = (Model.ForPages.NowPage - 6); intPage < (Model.ForPages.NowPage + 6); intPage++)
+        {
+            if ((intPage > 0) && (intPage <= Model.ForPages.MaxPage))
+            {
+                if (intPage == Model.ForPages.NowPage)
+                {
+                    <li class="active">
+                        @Html.ActionLink(intPage.ToString(), "Index", new { pages = intPage, bookId=bookId })
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Html.ActionLink(intPage.ToString(), "Index", new { pages = intPage, bookId=bookId })
+                    </li>
+                }
+            }
+        }
+        <li>
+            @if (Model.ForPages.NowPage < Model.ForPages.MaxPage)
+            {
+                @Html.ActionLink(">", "Index", new { pages = Model.ForPages.NowPage + 1, bookId=bookId })
+                @Html.ActionLink(" >>", "Index", new { pages = Model.ForPages.MaxPage, bookId = bookId })
+            }
+        </li>
+    </ul>
+</nav>
+
+<div>
+    @Html.ActionLink("返回", "Index", "Books", new { bookId = bookId }, new { @class = "btn btn-default" })
+</div>

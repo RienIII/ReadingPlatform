@@ -58,34 +58,16 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 				return books.ToList();
 			}
 
-			var booksPages = query.ToList().Select(x=>x.ToEntity());
+			double count = query.Count();
+			entity.ForPages = ForPagesExts.GetPages(count, entity.ForPages);
 
-			return ForPages(entity.ForPages, booksPages);
-		}
-
-		/// <summary>
-		/// 分頁用，全部寫在Search感覺好長
-		/// </summary>
-		/// <param name="pages">因為要分頁，所以要給分頁資訊</param>
-		/// <param name="entity">書籍基本訊息</param>
-		/// <returns></returns>
-		static List<BookBasicEntity> ForPages(ForPages pages, IEnumerable<BookBasicEntity> entity)
-		{
-			pages.MaxPage = Convert.ToInt32
-			(
-				Math.Ceiling
-				(
-					Convert.ToDouble((double)entity.Count()) / pages.ItemNumPage
-				)
-			);
-
-			pages.SetPage();
-
-			return entity
+			var bookPages = query
 				.OrderBy(x => x.Name)
-				.Skip((pages.NowPage - 1) * pages.ItemNumPage)
-				.Take(pages.ItemNumPage)
-				.ToList();
+				.Skip((entity.ForPages.NowPage - 1) * entity.ForPages.ItemNumPage)
+				.Take(entity.ForPages.ItemNumPage)
+				.ToList().Select(x=>x.ToEntity());
+
+			return bookPages.ToList();
 		}
 	}
 }

@@ -9,12 +9,12 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Exts
 {
 	public static partial  class ForgetPasswordResetVMExts
 	{
-		public static ForgetPasswordRequest ToRequest(this ForgetPasswordResetVM model, int memberId, string resetConfirmCode)
+		public static ForgetPasswordRequest ToRequest(this ForgetPasswordResetVM model, int memberId, string resetPasswordCode)
 		{
 			return new ForgetPasswordRequest
 			{
 				Id = memberId,
-				ConfirmCode = resetConfirmCode,
+				ResetPasswordCode = resetPasswordCode,
 				NewPassword = model.Password
 			};
 		}

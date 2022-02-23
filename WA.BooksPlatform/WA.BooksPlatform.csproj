@@ -135,11 +135,15 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\MessageBoardsController.cs" />
     <Compile Include="Models\DTOs\BecomeAuthorRequest.cs" />
     <Compile Include="Models\DTOs\BecomeAuthorResponse.cs" />
     <Compile Include="Models\DTOs\BookChapterCreateRequest.cs" />
+    <Compile Include="Models\DTOs\CommonResponse.cs" />
     <Compile Include="Models\DTOs\CreateBookRequest.cs" />
     <Compile Include="Models\DTOs\CreateBookResponse.cs" />
+    <Compile Include="Models\DTOs\MessageBoardItemRequest.cs" />
+    <Compile Include="Models\DTOs\MessageBoardRequest.cs" />
     <Compile Include="Models\EFModels\AppDbContext.cs" />
     <Compile Include="Models\EFModels\Author.cs" />
     <Compile Include="Models\EFModels\Book.cs" />
@@ -149,6 +153,8 @@
     <Compile Include="Models\EFModels\BookshelfItem.cs" />
     <Compile Include="Models\EFModels\Category.cs" />
     <Compile Include="Models\EFModels\Member.cs" />
+    <Compile Include="Models\EFModels\MessageBoard.cs" />
+    <Compile Include="Models\EFModels\MessageBoardItem.cs" />
     <Compile Include="Models\Entities\BookRepositoryEntity.cs" />
     <Compile Include="Models\DTOs\ForgetPasswordRequest.cs" />
     <Compile Include="Models\DTOs\LoginRequest.cs" />
@@ -169,6 +175,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\MessageBoardEntity.cs" />
+    <Compile Include="Models\Entities\MessageBoardItemEntity.cs" />
     <Compile Include="Models\Infrastructurse\Exts\AuthorEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\AuthorExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\AuthorVMExts.cs" />
@@ -189,6 +197,14 @@
     <Compile Include="Models\Infrastructurse\Exts\ManageAuthorBookCreateVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\MemberEntityExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\MemberExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardCreateVMExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardEntityExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardItemCreateVMExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardItemEntityExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardItemExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardItemRequestExts.cs" />
+    <Compile Include="Models\Infrastructurse\Exts\MessageBoardRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterRequestExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\RegisterVMExts.cs" />
     <Compile Include="Models\Infrastructurse\Exts\ResetPasswordVMExts.cs" />
@@ -203,6 +219,7 @@
     <Compile Include="Models\Infrastructurse\Repositories\BookshelfRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Infrastructurse\Repositories\MemberRepository.cs" />
+    <Compile Include="Models\Infrastructurse\Repositories\MessageBoardRepository.cs" />
     <Compile Include="Models\Services\Core\AuthorService.cs" />
     <Compile Include="Models\Services\Core\BookService.cs" />
     <Compile Include="Models\Services\Core\BookshelfService.cs" />
@@ -217,7 +234,9 @@
     <Compile Include="Models\Services\Core\Interfaces\IMemberRepository.cs" />
     <Compile Include="Models\DTOs\RegisterRequest.cs" />
     <Compile Include="Models\DTOs\RegisterResponse.cs" />
+    <Compile Include="Models\Services\Core\Interfaces\IMessageBoardRepository.cs" />
     <Compile Include="Models\Services\Core\MemberService.cs" />
+    <Compile Include="Models\Services\Core\MessageBoardService.cs" />
     <Compile Include="Models\Services\UseCases\BookshelfCommand.cs" />
     <Compile Include="Models\Services\UseCases\CreateBookCommand.cs" />
     <Compile Include="Models\Services\UseCases\ForgetPasswordCommand.cs" />
@@ -236,6 +255,9 @@
     <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\ManageAuthorBookCreateVM.cs" />
     <Compile Include="Models\ViewModels\ManageAuthorBooksVM.cs" />
+    <Compile Include="Models\ViewModels\MessageBoardCreateVM.cs" />
+    <Compile Include="Models\ViewModels\MessageBoardIndexVM.cs" />
+    <Compile Include="Models\ViewModels\MessageBoardItemIndexVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\ResetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\ResetProfileVM.cs" />
@@ -300,6 +322,11 @@
     <Content Include="Views\Authors\CurrentBookChapter.cshtml" />
     <Content Include="Views\Authors\BookChapterCreate.cshtml" />
     <Content Include="Views\Authors\BookChapterEdit.cshtml" />
+    <Content Include="Views\Members\ForgetPasswordView.cshtml" />
+    <Content Include="Views\MessageBoards\Index.cshtml" />
+    <Content Include="Views\MessageBoards\MessageBoardCreate.cshtml" />
+    <Content Include="Views\MessageBoards\MessageBoardItemIndex.cshtml" />
+    <Content Include="Views\MessageBoards\MessageBoardItemCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

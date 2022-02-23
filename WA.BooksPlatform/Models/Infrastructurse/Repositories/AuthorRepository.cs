@@ -12,7 +12,9 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 {
 	public class AuthorRepository : IAuthorRepository
 	{
-		private readonly string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["AppDbContext"].ToString();
+		private readonly string connStr = ConfigurationManager
+											.ConnectionStrings["AppDbContext"]
+											.ToString();
 		AppDbContext db;
 		public AuthorRepository()
 		{
@@ -51,7 +53,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 			int totalWord;
 			if (bookId.HasValue)
 			{
-				totalWord = db.Books.Find(bookId).TotalWord;
+				totalWord = db.Books.Find(bookId).ToBookEntity().TotalWord;
 			}
 			if (chapterId.HasValue)
 			{
@@ -62,6 +64,7 @@ namespace WA.BooksPlatform.Models.Infrastructurse.Repositories
 
 			var book = db.Books.Find(bookId);
 			book.TotalWord = totalWord;
+			book.ModifiedTime = DateTime.Now;
 
 			db.SaveChanges();
 		}

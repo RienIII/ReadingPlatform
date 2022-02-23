@@ -94,19 +94,43 @@
 				modify /Views/Books 全部
 				modify /Views/Home 全部
 
-[working on] add AuthorsController...
-	add /Models/DTOs/CreateBookRequest.cs
-	add /Models/DTOs/CreateBookResponse.cs
-	add /Models/Infrastructures/Exts/AuthorEntityExts.cs
-	add /Models/Infrastructures/Exts/CreateBookRequestExts.cs
-	add /Models/Infrastructures/Exts/ManageAuthorBookCreateVMExts.cs
-	add AuthorService	
-	add IAuthorRepository
-	add AuthorRepository
-	add /Models/ViewModels/ManageAuthorBookCreateVM.cs
-	add /Models/ViewModels/ManageAuthorBooksVM.cs
-	新增書籍與新增書籍內容完成
-	要開始做修改章節內容
-	Controller : add Action BookChapterEdit
-	AuthorService : add Method BookChapterEdit
-	AuthorRepo : add Method LordChapter, BookChapterUpdate
+[V] add AuthorsController...
+				add /Models/DTOs/CreateBookRequest.cs
+				add /Models/DTOs/CreateBookResponse.cs
+				add /Models/Infrastructures/Exts/AuthorEntityExts.cs
+				add /Models/Infrastructures/Exts/CreateBookRequestExts.cs
+				add /Models/Infrastructures/Exts/ManageAuthorBookCreateVMExts.cs
+				add AuthorService	
+				add IAuthorRepository
+				add AuthorRepository
+				add /Models/ViewModels/ManageAuthorBookCreateVM.cs
+				add /Models/ViewModels/ManageAuthorBooksVM.cs
+				新增書籍與新增書籍內容完成
+				要開始做修改章節內容
+				Controller : add Action BookChapterEdit
+				AuthorService : add Method BookChapterEdit
+				AuthorRepo : add Method LordChapter, BookChapterUpdate
+
+[working on] 留言板(MessageBoard)功能或稱為評論區，評論底下有留言...
+	add /Models/DTOs/CommonResponse.cs 建立通用的Response，因為有需多的Response只需要有"是否成功(bool)"和"錯誤訊息(string)"
+	add /Models/Entities/MessageBoardItemEntity.cs
+	add /Models/Entities/MessageBoardEntity.cs
+	...
+	MessageBoardService... 
+		add /Models/DTOs/MessageBoardRequest.cs
+		add /Models/Infrastructures/Exts/MessageBoardRequestExts.cs
+		add /Models/Infrastructures/Exts/MessageBoardItemRequestExts.cs
+	add /Models/Services/Core/Interfaces/IMessageBoardRepository.cs
+	...
+	add /Models/Infrastructures/Repositories/MessageBoardRepository.cs
+		add /Models/Infrastructures/Exts/MessageBoardEntityExts.cs
+		add /Models/Infrastructures/Exts/MessageBoardItemEntityExts.cs
+		add /Models/Infrastructures/Exts/MessageBoardExts.cs
+		add /Models/Infrastructures/Exts/MessageBoardItemExts.cs
+	...
+	add MessageBoardsController  
+		add /Models/ViewModels/MessageBoardCreateVM.cs 同一個地方再建一個class，MessageBoardItemCreateVM.cs
+		add /Models/Infrastructures/Exts/MessageBoardCreateVMExts.cs 
+		add /Models/Infrastructures/Exts/MessageBoardCreateItemVMExts.cs <=================
+
+	

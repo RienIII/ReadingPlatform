@@ -48,4 +48,21 @@ namespace WA.BooksPlatform.Models.Infrastructurse
 			if (this.MaxPage.Equals(0)) this.NowPage = 1;
 		}
 	}
+	public static class ForPagesExts
+	{
+		public static ForPages GetPages(double count, ForPages pages)
+		{
+			pages.MaxPage = Convert.ToInt32
+			(
+				Math.Ceiling
+				(
+					count / pages.ItemNumPage
+				)
+			);
+
+			pages.SetPage();
+
+			return pages;
+		}
+	}
 }

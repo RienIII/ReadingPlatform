@@ -13,7 +13,7 @@ namespace WA.BooksPlatform.Models.Services.UseCases
 		{
 			if (!response.IsSuccess) return;
 			
-			string result = string.Format(urlTemplate, response.Data.Id, response.Data.ConfirmCode);
+			string result = string.Format(urlTemplate, response.Data.Id, response.Data.ResetPasswordCode);
 			new EmailHelper().SendForgetPasswordEmail(result, response.Data.Name, response.Data.Email);
 			
 		}
